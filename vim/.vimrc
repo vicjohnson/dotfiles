@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 set number
 syntax on
 colorscheme jellybeans
@@ -25,3 +27,5 @@ map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 nnoremap <leader><S-tab> :tabprevious<cr>
 nnoremap <leader><tab> :tabnext<cr>
+
+autocmd BufNewFile,BufRead *.json set ft=json
