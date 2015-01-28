@@ -1,13 +1,14 @@
 execute pathogen#infect()
 
-filetype indent on
+"filetype indent on
 set autoindent
-set smartindent
+"set smartindent
 
 set number
 syntax on
 colorscheme jellybeans
 
+set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set expandtab
@@ -16,20 +17,20 @@ set cursorline
 
 set showmatch
 
+let mapleader=","
+map j gj
+map k gk
+map <leader>d :bd<cr> 
+map <leader>e :e<space> 
+nnoremap <leader><S-tab> :bp<cr>
+nnoremap <leader><tab> :bn<cr>
+nnoremap <leader>b :buffer<space>
+nnoremap <leader>s :vsp<cr>
+nnoremap <leader>l :ls<cr>
+
+autocmd BufNewFile,BufRead *.json set ft=json
+
 set incsearch
 set hlsearch
 nnoremap <leader><space> :nohlsearch<CR>
 set ignorecase
-
-
-let mapleader=","
-map j gj
-map k gk
-map <leader>bd :bd<cr> 
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-nnoremap <leader><S-tab> :tabprevious<cr>
-nnoremap <leader><tab> :tabnext<cr>
-
-autocmd BufNewFile,BufRead *.json set ft=json
