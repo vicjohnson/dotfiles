@@ -21,12 +21,16 @@ let mapleader=","
 map j gj
 map k gk
 map <leader>d :bd<cr> 
-map <leader>e :e<space> 
+map <leader>e :e<space>
 nnoremap <leader><S-tab> :bp<cr>
 nnoremap <leader><tab> :bn<cr>
 nnoremap <leader>b :buffer<space>
-nnoremap <leader>s :vsp<cr>
+nnoremap <leader>v :vsp<cr>
+nnoremap <leader>h :sp<cr>
 nnoremap <leader>l :ls<cr>
+nnoremap <leader>w <C-w><C-w>
+
+nnoremap <leader>s :w<cr> 
 
 autocmd BufNewFile,BufRead *.json set ft=json
 

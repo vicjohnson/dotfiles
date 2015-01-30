@@ -5,6 +5,7 @@
 	autocrlf = input
 	safecrlf = true
 	excludesfile = /Users/victor/.gitignore_global
+	editor = vim
 [alias]
 	co = checkout
 	ci = commit
@@ -22,3 +23,5 @@
 	trustExitCode = true
 [push]
 	default = simple
+[color]
+	ui = true
