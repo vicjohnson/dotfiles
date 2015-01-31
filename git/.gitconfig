@@ -2,7 +2,7 @@
 	name = Victor Johnson
 	email = vicjohnson1213@gmail.com
 [core]
-	autocrlf = input
+	autocrlf = false
 	safecrlf = true
 	excludesfile = /Users/victor/.gitignore_global
 	editor = vim
