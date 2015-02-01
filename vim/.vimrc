@@ -1,8 +1,10 @@
 execute pathogen#infect()
 
-"filetype indent on
+filetype plugin on
+
+filetype indent on
 set autoindent
-"set smartindent
+set smartindent
 
 set number
 syntax on
@@ -29,8 +31,9 @@ nnoremap <leader>v :vsp<cr>
 nnoremap <leader>h :sp<cr>
 nnoremap <leader>l :ls<cr>
 nnoremap <leader>w <C-w><C-w>
-
 nnoremap <leader>s :w<cr> 
+
+nnoremap <leader>p :CtrlP c<cr>
 
 autocmd BufNewFile,BufRead *.json set ft=json
 
