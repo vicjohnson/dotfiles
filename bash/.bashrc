@@ -5,10 +5,6 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-if [ -f ~/.srcnvm ]; then
-    . ~/.srcnvm
-fi
-
 export PS1='\e[0;36m[\w]\e[0;31m$(__git_ps1)\n[\!][\#] - $: \e[m'
 export CLICOLOR=1
 export LSCOLORS=gxbxfxdxcxegedabagaced
