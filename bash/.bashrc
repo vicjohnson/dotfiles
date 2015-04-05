@@ -19,6 +19,5 @@ alias lla='ls -al'
 alias lsa='ls -a'
 alias rmf='rm -rf'
 alias mkdir='mkdir -p'
-alias which='type -a'
 
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
