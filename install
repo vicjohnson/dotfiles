@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+
+ln -s "$PWD/bash/.bashrc" ~/.bashrc
+ln -s "$PWD/git/.gitconfig" ~/.gitconfig
+ln -s "$PWD/git/.git-prompt.sh" ~/.git-prompt.sh
+ln -s "$PWD/vim/.vim" ~/.vim
+ln -s "$PWD/vim/.vimrc" ~/.vimrc
