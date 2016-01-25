@@ -13,14 +13,14 @@ export NVM_DIR="$HOME/.nvm"
 # ---------- Add a marker for remote shells ----------
 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ]; then
-    my_host="[0;31m[R]\e[m"
+    my_host="\e[0;31m[R]\e[m"
 else
     my_host=""
 fi
 
 
 # ---------- Set up custom prompt ----------
-export PS1='${my_host}\e[0;36m[\w][\u]\e[0;31m$(__git_ps1)\n\e[0;31m[\!][\#] - $: \e[m'
+export PS1="${my_host}\e[0;36m[\w][\u]\e[0;31m$(__git_ps1)\n\e[0;31m[\!][\#] - $: \e[m"
 export CLICOLOR=1
 export LSCOLORS=gxbxfxdxcxegedabagaced
 
