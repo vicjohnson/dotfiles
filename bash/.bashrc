@@ -30,7 +30,7 @@ alias lla="ls -al"
 alias rmf="rm -rf"
 alias mkdir="mkdir -p"
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-alias fuck="eval $(thefuck $(fc -ln -1)); history -r"
+# alias fuck="eval $(thefuck $(fc -ln -1)); history -r"
 alias ..="cd .. && lla"
 
 alias og++="\g++"
