@@ -64,10 +64,10 @@ extract () {
                 *.zip)       unzip "$archive"       ;;
                 *.Z)         uncompress "$archive"  ;;
                 *.7z)        7z x "$archive"        ;;
-                *)           echo "What the fuck is this: ${Red}'$archive'${No_Color}?" ;;
+                *)           echo "This is not an archive: ${Red}'$archive'${No_Color}" ;;
             esac
         else
-            echo "HEY IDIOT! '$archive' is not a valid file!"
+            echo "'$archive' is not a valid file!"
         fi
     done
 }
