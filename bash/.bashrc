@@ -73,7 +73,7 @@ function makePS1() {
     local delim="${No_Color}${Dim}][${Normal}"
     local directory="${Cyan}\w${No_Color}"
     local user="${Cyan}\u${No_Color}"
-    local host="${Cyan}\h${No_Color}"
+    local host="${Purple}\h${No_Color}"
     local cmd_num="${Purple}\#${No_Color}"
     local prompt="${Dim}- $: ${Normal}"
 
