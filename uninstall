@@ -1,0 +1,8 @@
+#! /usr/bin/env bash
+
+rm -rf ~/.bashrc
+rm -rf ~/.bash_aliases
+rm -rf ~/.gitconfig
+rm -rf ~/.git-prompt.sh
+rm -rf ~/.vim
+rm -rf ~/.vimrc
