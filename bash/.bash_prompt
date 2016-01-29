@@ -1,0 +1,32 @@
+# ---------- Set up custom prompt ----------
+function makePS1 {
+    # This must be done first to preserve the last exit status
+    local last_exit_status=$?
+
+    local start="${No_Color}${Dim}[${Normal}"
+    local end="${No_Color}${Dim}]${Normal}"
+    local delim="${No_Color}${Dim}][${Normal}"
+    local directory="${Cyan}\w${No_Color}"
+    local user="${Cyan}\u${No_Color}"
+    local host="${Purple}\h${No_Color}"
+    local cmd_num="${Purple}\#${No_Color}"
+    local prompt="${Dim}- $: ${Normal}"
+
+
+    if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ]; then
+        my_host="${start} ${host} ${end}"
+    else
+        my_host=""
+    fi
+
+    if [[ ${last_exit_status} -eq "0" ]]; then
+        exit_status="${Green}${last_exit_status}${No_Color}"
+    else
+        exit_status="${Red}${Bold}${last_exit_status}${Normal}${No_Color}"
+    fi
+
+    export PS1="\n${Cyan}${start} ${directory} ${delim} ${user} ${end}${my_host}\n"
+    export PS1+="${start}${exit_status}${delim}${cmd_num}${end} ${prompt}"
+}
+
+export PROMPT_COMMAND=makePS1

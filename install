@@ -1,8 +1,19 @@
 #! /usr/bin/env bash
 
-ln -s "$PWD/bash/.bashrc" ~/.bashrc
-ln -s "$PWD/bash/.bash_aliases" ~/.bash_aliases
-ln -s "$PWD/git/.gitconfig" ~/.gitconfig
-ln -s "$PWD/git/.git-prompt.sh" ~/.git-prompt.sh
-ln -s "$PWD/vim/.vim" ~/.vim
-ln -s "$PWD/vim/.vimrc" ~/.vimrc
+declare -A files
+
+files[~/.bashrc]=bash/.bashrc
+files[~/.bash_styles]=bash/.bash_styles
+files[~/.bash_prompt]=bash/.bash_prompt
+files[~/.bash_aliases]=bash/.bash_aliases
+files[~/.bash_welcome]=bash/.bash_welcome
+files[~/.gitconfig]=git/.gitconfig
+files[~/.git-prompt.sh]=git/.git-prompt.sh
+files[~/.vim]=vim/.vim
+files[~/.vimrc]=vim/.vimrc
+
+for f in ${!files[@]}; do
+    if [[ -h $f ]] || [[ ! -a $f ]]; then
+        ln -sf "$PWD/${files[$f]}" $f
+    fi
+done

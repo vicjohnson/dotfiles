@@ -1,8 +1,19 @@
 #! /usr/bin/env bash
 
-rm -rf ~/.bashrc
-rm -rf ~/.bash_aliases
-rm -rf ~/.gitconfig
-rm -rf ~/.git-prompt.sh
-rm -rf ~/.vim
-rm -rf ~/.vimrc
+files=(
+    ~/.bashrc
+    ~/.bash_styles
+    ~/.bash_prompt
+    ~/.bash_aliases
+    ~/.bash_welcome
+    ~/.gitconfig
+    ~/.git-prompt.sh
+    ~/.vim
+    ~/.vimrc
+)
+
+for f in ${files[@]}; do
+    if [ -h ${f} ]; then
+        rm -rf ${f}
+    fi
+done
