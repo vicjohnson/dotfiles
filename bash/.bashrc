@@ -1,63 +1,46 @@
-source ~/.git-prompt.sh
+# ---------- Color variables for coloring output ----------
+Black='\[\e[0;30m\]'        # Black
+Red='\[\e[0;31m\]'          # Red
+Green='\[\e[0;32m\]'        # Green
+Yellow='\[\e[0;33m\]'       # Yellow
+Blue='\[\e[0;34m\]'         # Blue
+Purple='\[\e[0;35m\]'       # Purple
+Cyan='\[\e[0;36m\]'         # Cyan
+White='\[\e[0;37m\]'        # White
+No_Color='\[\e[m\]'         # No Color
 
-# ---------- Source global definitions if they exist ----------
+BBlack='\[\e[1;30m\]'       # Black
+BRed='\[\e[1;31m\]'         # Red
+BGreen='\[\e[1;32m\]'       # Green
+BYellow='\[\e[1;33m\]'      # Yellow
+BBlue='\[\e[1;34m\]'        # Blue
+BPurple='\[\e[1;35m\]'      # Purple
+BCyan='\[\e[1;36m\]'        # Cyan
+BWhite='\[\e[1;37m\]'       # White
+
+Normal='\[\e[0m\]'          # Normal
+Bold='\[\e[1m\]'            # Bold
+Dim='\[\e[2m\]'             # Dim
+Underline='\[\e[4m\]'       # Underline
+Blink='\[\e[5m\]'           # Blink
+
+# ---------- Source other files if they exist ----------
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
+fi
+
+if [ -f ~/.git-prompt.sh ]; then
+    . ~/.git-prompt.sh
+fi
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
 
 
 # ---------- Load nvm when the shell starts up ----------
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# ---------- Add a marker for remote shells ----------
-
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ]; then
-    my_host="\e[0;31m[R]\e[m"
-else
-    my_host=""
-fi
-
-
-# ---------- Set up custom prompt ----------
-export PS1="${my_host}\e[0;36m[\w][\u]\e[0;31m$(__git_ps1)\n\e[0;31m[\!][\#] - $: \e[m"
-export CLICOLOR=1
-export LSCOLORS=gxbxfxdxcxegedabagaced
-
-# ---------- Create aliases for common commands ----------
-alias cade="ssh victorj@lab1-26.eng.utah.edu"
-alias lla="ls -al"
-alias rmf="rm -rf"
-alias mkdir="mkdir -p"
-alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
-# alias fuck="eval $(thefuck $(fc -ln -1)); history -r"
-alias ..="cd .. && lla"
-
-alias og++="\g++"
-alias ogcc="\gcc"
-
-alias g++="g++-4.9"
-alias gcc="gcc-4.9"
-
-alias nt="npm test"
-alias ns="npm start"
-alias tk="kelp test.klp"
-alias mochaw="mocha --recursive -w -R dot"
-alias lc="find . -type d \\( -name node_modules -o -name coverage -o -name .git -o -name .DS_Store \\) -prune -o -type f | xargs wc -l"
-
-
-# ---------- My quick navigation aliases ----------
-alias proj="cd ~/Documents/projects"
-alias github="cd ~/Documents/projects/github"
-alias bitb="cd ~/Documents/projects/bitbucket"
-alias ios="cd ~/Documents/projects/iOS"
-alias npmd="cd ~/Documents/projects/npm"
-
-
-# ---------- Fun aliases ----------
-alias smallscreen="python ~/Documents/projects/random/displayManager/display_manager.py set -w 2880 -h 1800 -d 32 -r 0"
-alias medscreen="python ~/Documents/projects/random/displayManager/display_manager.py set -w 2560 -h 1600 -d 32 -r 0"
-alias regscreen="python ~/Documents/projects/random/displayManager/display_manager.py set -w 1920 -h 1200 -d 32 -r 0"
 
 
 # ---------- Any time I cd into a directory, add that directory to $PATH ----------
@@ -67,7 +50,54 @@ export PATH="$PATH:~/bin"
 export OLD_PATH=$PATH
 export PATH=$OLD_PATH:$PWD
 
-cdp() {
+function cdp() {
     \cd $1
     export PATH=$OLD_PATH:$PWD
 }
+
+
+# ---------- Automatically cd into a new dir ----------
+function mkdirc() {
+    mkdir $1
+    cd $1
+}
+
+
+# ---------- Set up custom prompt ----------
+function makePS1() {
+    # This must be done first to preserve the last exit status
+    local last_exit_status=$?
+
+    local start="${No_Color}${Dim}[${Normal}"
+    local end="${No_Color}${Dim}]${Normal}"
+    local delim="${No_Color}${Dim}][${Normal}"
+    local directory="${Cyan}\w${No_Color}"
+    local user="${Cyan}\u${No_Color}"
+    local host="${Cyan}\h${No_Color}"
+    local cmd_num="${Purple}\#${No_Color}"
+    local prompt="${Dim}- $: ${Normal}"
+
+
+    if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ]; then
+        my_host="${start} ${host} ${end}"
+    else
+        my_host=""
+    fi
+
+    if [[ ${last_exit_status} -eq "0" ]]; then
+        exit_status="${Green}${last_exit_status}${No_Color}"
+    else
+        exit_status="${Red}${Bold}${last_exit_status}${Normal}${No_Color}"
+    fi
+
+    export PS1="\n${Cyan}${start} ${directory} ${delim} ${user} ${end}${my_host}\n"
+    export PS1+="${start}${exit_status}${delim}${cmd_num}${end} ${prompt}"
+}
+
+export PROMPT_COMMAND=makePS1
+export CLICOLOR=1
+export LSCOLORS=gxbxfxdxcxegedabagaced
+
+# ---------- Other helopful stuff ----------
+shopt -s cdspell;
+

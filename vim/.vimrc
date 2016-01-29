@@ -19,6 +19,10 @@ set cursorline
 
 set showmatch
 
+set nobackup
+set nowb
+set noswapfile
+
 let mapleader=","
 map j gj
 map k gk
