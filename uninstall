@@ -8,6 +8,7 @@ files=(
     ~/.bash_welcome
     ~/.bash_osx
     ~/.bash_ubuntu
+    ~/.dircolors
     ~/.gitconfig
     ~/.git-prompt.sh
     ~/.vim

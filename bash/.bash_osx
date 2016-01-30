@@ -4,4 +4,28 @@ alias lip="ipconfig getifaddr en0"
 alias lla="ls -al"
 
 export CLICOLOR=1
-export LSCOLORS=gxbxfxdxcxegedabagaced
+
+if [[ -f ~/.dircolors ]]; then
+    if [[ -f /usr/local/bin/gdircolors ]]; then
+        eval $(/usr/local/bin/gdircolors ~/.dircolors)
+    else
+        echo "GNU coreutils must be installed."
+
+        while true; do
+            read -p "Do you want to install them with Homebrew?" yn
+            case $yn in
+                [Yy]* )
+                    brew install coreutils --default-names && eval $(/usr/local/bin/gdircolors ~/.dircolors)
+                    ;;
+                [Nn]* )
+                    break
+                    ;;
+                * )
+                    echo "Please answer yes or no."
+                    ;;
+            esac
+        done
+    fi
+else
+    export LSCOLORS=gxbxfxdxcxegedabagaced
+fi

@@ -22,7 +22,7 @@ done
 # ---------- Source platform specific config ----------
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.bash_osx
-else
+elif [[ $(uname) == "Linux" ]]; then
     source ~/.bash_ubuntu
 fi
 

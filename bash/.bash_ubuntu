@@ -1,2 +1,8 @@
-alias ls='ls --color'
-export LS_COLORS='di=36:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
+alias lla="ls -al --color=auto"
+alias agi="sudo apt-get update && sudo apt-get install"
+
+if [[ -f ~/.dircolors ]]; then
+    eval $(dircolors ~/.dircolors)
+else
+    export LS_COLORS="di=36:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35"
+fi
