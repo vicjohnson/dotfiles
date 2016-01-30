@@ -12,10 +12,11 @@ if [[ -f ~/.dircolors ]]; then
         echo "GNU coreutils must be installed."
 
         while true; do
-            read -p "Do you want to install them with Homebrew?" yn
+            read -p "Do you want to install them with Homebrew? (y/n) " yn
             case $yn in
                 [Yy]* )
-                    brew install coreutils --default-names && eval $(/usr/local/bin/gdircolors ~/.dircolors)
+                    brew install coreutils --default-names && eval $(/usr/local/bin/gdircolors -b ~/.dircolors)
+                    break
                     ;;
                 [Nn]* )
                     break
