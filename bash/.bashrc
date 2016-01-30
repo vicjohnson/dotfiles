@@ -19,22 +19,21 @@ for f in ${files[@]}; do
 done
 
 
+# ---------- Source platform specific config ----------
+if [[ $(uname) == "Darwin" ]]; then
+    source ~/.bash_osx
+else
+    source ~/.bash_ubuntu
+fi
+
+
 # ---------- Load nvm when the shell starts up ----------
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
 # ---------- Any time I cd into a directory, add that directory to $PATH ----------
-# alias cd="cdp"
-
 export PATH="$PATH:~/bin:"
-# export OLD_PATH=$PATH
-# export PATH=$OLD_PATH:$PWD
-
-# function cdp {
-#     \cd "$1"
-#     export PATH=$OLD_PATH:$PWD
-# }
 
 
 # ---------- Automatically cd into a new dir ----------
@@ -42,10 +41,6 @@ function mkdirc {
     mkdir "$1"
     cd "$1"
 }
-
-
-export CLICOLOR=1
-export LSCOLORS=gxbxfxdxcxegedabagaced
 
 
 # Extracts any archive(s) (if unp isn't installed)

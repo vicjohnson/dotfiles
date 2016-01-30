@@ -6,6 +6,8 @@ files=(
     ~/.bash_prompt
     ~/.bash_aliases
     ~/.bash_welcome
+    ~/.bash_osx
+    ~/.bash_ubuntu
     ~/.gitconfig
     ~/.git-prompt.sh
     ~/.vim

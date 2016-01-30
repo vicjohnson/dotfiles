@@ -1,0 +1,7 @@
+# ---------- Application aliases ----------
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+alias lip="ipconfig getifaddr en0"
+alias lla="ls -al"
+
+export CLICOLOR=1
+export LSCOLORS=gxbxfxdxcxegedabagaced
