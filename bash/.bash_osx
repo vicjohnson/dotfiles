@@ -1,7 +1,6 @@
 # ---------- Application aliases ----------
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias lip="ipconfig getifaddr en0"
-alias lla="ls -al"
 
 export CLICOLOR=1
 
@@ -15,7 +14,9 @@ if [[ -f ~/.dircolors ]]; then
             read -p "Do you want to install them with Homebrew? (y/n) " yn
             case $yn in
                 [Yy]* )
-                    brew install coreutils --default-names && eval $(/usr/local/bin/gdircolors -b ~/.dircolors)
+                    brew install coreutils --default-names
+                    eval $(/usr/local/bin/gdircolors -b ~/.dircolors)
+
                     break
                     ;;
                 [Nn]* )
@@ -29,4 +30,11 @@ if [[ -f ~/.dircolors ]]; then
     fi
 else
     export LSCOLORS=gxbxfxdxcxegedabagaced
+fi
+
+
+if [[ -e /usr/local/bin/gls ]]; then
+    alias lla="/usr/local/bin/gls -al --color=auto"
+else
+    alias lla="ls -al"
 fi
