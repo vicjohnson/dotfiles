@@ -6,6 +6,7 @@
 # ---------- Source other files if they exist ----------
 files=(
     /etc/bashrc
+    ~/.git-prompt.sh
     ~/.bash_styles
     ~/.bash_prompt
     ~/.bash_aliases

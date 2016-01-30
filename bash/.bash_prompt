@@ -11,7 +11,12 @@ function makePS1 {
     local host="${Purple}\h${No_Color}"
     local cmd_num="${Purple}\#${No_Color}"
     local prompt="${Dim}- $: ${Normal}"
+    local branch=$(__git_ps1 "%s")
 
+
+    if [[ ${branch} != "" ]]; then
+        branch="${start} ${Purple}${branch}${No_Color} ${end}"
+    fi
 
     if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ]; then
         my_host="${start} ${host} ${end}"
@@ -25,7 +30,7 @@ function makePS1 {
         exit_status="${Red}${Bold}${last_exit_status}${Normal}${No_Color}"
     fi
 
-    export PS1="\n${Cyan}${start} ${directory} ${delim} ${user} ${end}${my_host}\n"
+    export PS1="\n${Cyan}${start} ${directory} ${delim} ${user} ${end}${my_host}${branch}\n"
     export PS1+="${start}${exit_status}${delim}${cmd_num}${end} ${prompt}"
 }
 
