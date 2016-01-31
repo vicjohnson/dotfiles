@@ -191,6 +191,7 @@ EXEC                    00;38;5;34
 .gitconfig      00;38;5;167
 .gitignore      00;38;5;167
 .gitmodules     00;38;5;167
+.gitprompt      00;38;5;167
 .bash_welcome   00;38;5;167
 .bash_osx       00;38;5;167
 .bash_ubuntu    00;38;5;167

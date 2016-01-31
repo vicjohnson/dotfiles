@@ -1,5 +1,6 @@
 # ---------- Regular commands with options ----------
 alias mkdir="mkdir -p"
+alias grep="grep --color=auto"
 alias cx="chmod a+x"
 alias sl="sudo !!"
 

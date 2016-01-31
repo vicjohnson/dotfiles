@@ -16,7 +16,7 @@ files[~/.bash_osx]=bash/.bash_osx
 files[~/.bash_ubuntu]=bash/.bash_ubuntu
 files[~/.dircolors]=bash/.dircolors
 files[~/.gitconfig]=git/.gitconfig
-files[~/.git-prompt.sh]=git/.git-prompt.sh
+files[~/.gitprompt]=git/.gitprompt
 files[~/.vim]=vim/.vim
 files[~/.vimrc]=vim/.vimrc
 
@@ -25,3 +25,13 @@ for f in ${!files[@]}; do
         ln -sf "$PWD/${files[$f]}" $f
     fi
 done
+
+declare -A sublimePath
+
+sublimePath["Darwin"]=~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Shell-Unix-Generic.sublime-settings
+sublimePath["Linux"]=~/.config/sublime-text-3/Packages/User/Shell-Unix-Generic.sublime-settings
+localSublimePath=sublime/Shell-Unix-Generic.sublime-settings
+
+if [[ -h ${sublimePath[$(uname)]} ]] || [[ ! -a ${sublimePath[$(uname)]} ]]; then
+    ln -sf "$PWD/$localSublimePath" "${sublimePath[$(uname)]}"
+fi

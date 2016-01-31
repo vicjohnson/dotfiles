@@ -1,0 +1,25 @@
+{
+    "extensions": [
+        ".bash_aliases",
+        ".bash_osx",
+        ".bash_prompt",
+        ".bash_styles",
+        ".bash_ubuntu",
+        ".bash_welcome",
+        ".bashrc",
+        ".brew",
+        ".editorconfig",
+        ".functions",
+        ".git",
+        ".gitattributes",
+        ".gitconfig",
+        ".gitignore",
+        ".gitmodules",
+        ".gitprompt",
+        ".npmignore",
+        ".npmrc",
+        ".osx",
+        ".packages",
+        ".pkginit",
+    ]
+}

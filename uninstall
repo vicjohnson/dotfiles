@@ -10,13 +10,15 @@ files=(
     ~/.bash_ubuntu
     ~/.dircolors
     ~/.gitconfig
-    ~/.git-prompt.sh
+    ~/.gitprompt
     ~/.vim
     ~/.vimrc
+    ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Shell-Unix-Generic.sublime-settings
+    ~/.config/sublime-text-3/Packages/User/Shell-Unix-Generic.sublime-settings
 )
 
-for f in ${files[@]}; do
-    if [ -h ${f} ]; then
-        rm -rf ${f}
+for f in "${files[@]}"; do
+    if [ -h "$f" ]; then
+        rm -rf "$f"
     fi
 done
