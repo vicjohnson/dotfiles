@@ -77,15 +77,15 @@ TERM xterm-termite
 NORMAL                  00;38;5;244             # no color code at all
 #FILE                   00                      # regular file: use no color at all
 RESET                   0                       # reset to "normal" color
-DIR                     38;5;29                 # directory 01;34
-LINK                    38;5;131                # symbolic link. (target for target type color)
+DIR                     38;5;24                 # directory 01;34
+LINK                    48;5;194;38;5;24                # symbolic link. (target for target type color)
 
 MULTIHARDLINK           00                      # regular file with more than one link
-FIFO                    38;5;203;01             # pipe
-SOCK                    38;5;203;01             # socket
-DOOR                  38;5;203;01
-BLK                  38;5;203;01
-CHR                  38;5;203;01
+FIFO                    48;5;223;38;5;24;01             # pipe
+SOCK                    48;5;223;38;5;24;01             # socket
+DOOR                    48;5;223;38;5;24;01
+BLK                     48;5;223;38;5;24;01
+CHR                     48;5;223;38;5;24;01
 ORPHAN                  05;48;5;1;38;5;15       # symlink to nonexistent file, or non-stat'able file
 EXEC                    00;38;5;34
 
@@ -152,51 +152,53 @@ EXEC                    00;38;5;34
 .m4a    00;38;5;166
 
 # Documents/Readables
-.pdf  00;38;5;050
-.PDF  00;38;5;050
-.htm  00;38;5;050
-.html 00;38;5;050
-.HTML 00;38;5;050
-.doc  00;38;5;050
-.docx 00;38;5;050
-.ppt  00;38;5;050
-.pptx 00;38;5;050
-.xml  00;38;5;050
+.pdf  00;38;5;38
+.PDF  00;38;5;38
+.htm  00;38;5;38
+.html 00;38;5;38
+.HTML 00;38;5;38
+.doc  00;38;5;38
+.docx 00;38;5;38
+.ppt  00;38;5;38
+.pptx 00;38;5;38
+.xml  00;38;5;38
 
 # Source code files
-.pl             00;38;5;24
-.PL             00;38;5;24
-.py             00;38;5;24
-.pm             00;38;5;24
-.tt             00;38;5;24
-.yml            00;38;5;24
-.sql            00;38;5;24
-.css            00;38;5;24
-.js             00;38;5;24
-.sh             00;38;5;24
-.csh            00;38;5;24
-.tcsh           00;38;5;24
-.hs             00;38;5;24
-.rb             00;38;5;24
-.cc             00;38;5;24
-.c              00;38;5;24
-.cpp            00;38;5;24
-.lua            00;38;5;24
-.vim            00;38;5;24
-.go             00;38;5;24
-.rkt            00;38;5;24
-*rc             00;38;5;24
-.gitconfig      00;38;5;24
-.gitignore      00;38;5;24
-.gitmodules     00;38;5;24
-.bash_welcome   00;38;5;24
-.bash_osx       00;38;5;24
-.bash_ubuntu    00;38;5;24
-.bash_prompt    00;38;5;24
-.bash_profile   00;38;5;24
-.bash_aliases   00;38;5;24
-.bash_styles    00;38;5;24
-.dircolors      00;38;5;24
+.pl             00;38;5;167
+.PL             00;38;5;167
+.py             00;38;5;167
+.pm             00;38;5;167
+.tt             00;38;5;167
+.yml            00;38;5;167
+.sql            00;38;5;167
+.css            00;38;5;167
+.js             00;38;5;167
+.sh             00;38;5;167
+.csh            00;38;5;167
+.tcsh           00;38;5;167
+.hs             00;38;5;167
+.rb             00;38;5;167
+.cc             00;38;5;167
+.c              00;38;5;167
+.cpp            00;38;5;167
+.lua            00;38;5;167
+.vim            00;38;5;167
+.go             00;38;5;167
+.rkt            00;38;5;167
+.php            00;38;5;167
+.asm            00;38;5;167
+*rc             00;38;5;167
+.gitconfig      00;38;5;167
+.gitignore      00;38;5;167
+.gitmodules     00;38;5;167
+.bash_welcome   00;38;5;167
+.bash_osx       00;38;5;167
+.bash_ubuntu    00;38;5;167
+.bash_prompt    00;38;5;167
+.bash_profile   00;38;5;167
+.bash_aliases   00;38;5;167
+.bash_styles    00;38;5;167
+.dircolors      00;38;5;167
 
 # Other files
 .torrent         00;38;5;27
@@ -217,10 +219,10 @@ EXEC                    00;38;5;34
 .sqlite          00;38;5;27
 
 # logs and backups
-.log        00;38;5;240
-.bak        00;38;5;240
-.aux        00;38;5;240
-.o          00;38;5;240
-.pyc        00;38;5;240
-.class      00;38;5;240
-.cache      00;38;5;240
+.log        00;38;5;242
+.bak        00;38;5;242
+.aux        00;38;5;242
+.o          00;38;5;242
+.pyc        00;38;5;242
+.class      00;38;5;242
+.cache      00;38;5;242
