@@ -81,8 +81,11 @@ DIR                     38;5;29                 # directory 01;34
 LINK                    38;5;131                # symbolic link. (target for target type color)
 
 MULTIHARDLINK           00                      # regular file with more than one link
-FIFO                    38;5;136;01             # pipe
-SOCK                    38;5;136;01             # socket
+FIFO                    38;5;203;01             # pipe
+SOCK                    38;5;203;01             # socket
+DOOR                  38;5;203;01
+BLK                  38;5;203;01
+CHR                  38;5;203;01
 ORPHAN                  05;48;5;1;38;5;15       # symlink to nonexistent file, or non-stat'able file
 EXEC                    00;38;5;34
 
@@ -185,6 +188,7 @@ EXEC                    00;38;5;34
 *rc             00;38;5;24
 .gitconfig      00;38;5;24
 .gitignore      00;38;5;24
+.gitmodules     00;38;5;24
 .bash_welcome   00;38;5;24
 .bash_osx       00;38;5;24
 .bash_ubuntu    00;38;5;24
