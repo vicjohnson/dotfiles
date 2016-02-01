@@ -40,7 +40,9 @@ export PATH="$PATH:~/bin:"
 # ---------- Don't echo the current dir when I cd to $OLDPWD ----------
 alias cd="cdp"
 cdp () {
-    if [[ "$1" == "-" ]]; then
+    if [[ "$1" == "" ]]; then
+        \cd ~
+    elif [[ "$1" == "-" ]]; then
         \cd "$OLDPWD"
     else
         \cd "$1"
@@ -49,7 +51,6 @@ cdp () {
 
 
 # ---------- Automatically cd into a new dir ----------
-alias mkdir="mkdirc"
 function mkdirc {
     \mkdir "$1"
     cd "$1"
