@@ -36,6 +36,7 @@ export NVM_DIR="$HOME/.nvm"
 # ---------- Any time I cd into a directory, add that directory to $PATH ----------
 export PATH="$PATH:~/bin:"
 
+
 # ---------- Don't echo the current dir when I cd to $OLDPWD ----------
 alias cd="cdp"
 cdp () {
@@ -48,8 +49,9 @@ cdp () {
 
 
 # ---------- Automatically cd into a new dir ----------
+alias mkdir="mkdirc"
 function mkdirc {
-    mkdir "$1"
+    \mkdir "$1"
     cd "$1"
 }
 
