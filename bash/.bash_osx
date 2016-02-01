@@ -1,6 +1,14 @@
+# ---------- homebrew autocomplete ----------
+source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
+
 # ---------- Application aliases ----------
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias lip="ipconfig getifaddr en0"
+alias bi="brew install"
+alias bu="brew uninstall"
+alias bl="brew list"
+alias bs="brew search"
+
 
 export CLICOLOR=1
 
