@@ -10,7 +10,6 @@ files=(
     ~/.bash_styles
     ~/.bash_prompt
     ~/.bash_aliases
-    ~/.bash_welcome
 )
 
 for f in ${files[@]}; do
