@@ -3,6 +3,7 @@ alias mkdir="mkdir -p"
 alias grep="grep --color=auto"
 alias cx="chmod a+x"
 alias sl="sudo !!"
+alias cd="cd $1 >> /dev/null"
 
 
 # ---------- Internet aliases ----------

@@ -37,19 +37,6 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:~/bin:"
 
 
-# ---------- Don't echo the current dir when I cd to $OLDPWD ----------
-alias cd="cdp"
-cdp () {
-    if [[ "$1" == "" ]]; then
-        \cd ~
-    elif [[ "$1" == "-" ]]; then
-        \cd "$OLDPWD"
-    else
-        \cd "$1"
-    fi
-}
-
-
 # ---------- Automatically cd into a new dir ----------
 function mkdirc {
     \mkdir "$1"
