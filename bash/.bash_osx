@@ -2,10 +2,6 @@
 source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
 
 
-# ---------- Only welcome me on the mac computers ----------
-source ~/.bashrc
-
-
 # ---------- Application aliases ----------
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias lip="ipconfig getifaddr en0"

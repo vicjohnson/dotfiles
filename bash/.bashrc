@@ -2,6 +2,8 @@
 # to return bash to it's original version run the following command:
 # chsh -s /bin/bash
 
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
 
 # ---------- Source other files if they exist ----------
 files=(
@@ -10,6 +12,7 @@ files=(
     ~/.bash_styles
     ~/.bash_prompt
     ~/.bash_aliases
+    ~/.bash_welcome
 )
 
 for f in ${files[@]}; do
