@@ -1,9 +1,9 @@
 #! /usr/bin/env bash
 
-./uninstall
+thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-git submodule init
-git submodule update
+git -C "$thisDir" submodule init
+git -C "$thisDir" submodule update
 
 declare -A files
 
@@ -22,7 +22,7 @@ files[~/.vimrc]=vim/.vimrc
 
 for f in ${!files[@]}; do
     if [[ -h $f ]] || [[ ! -a $f ]]; then
-        ln -sf "$PWD/${files[$f]}" $f
+        ln -sf "$thisDir/${files[$f]}" "$f"
     fi
 done
 
@@ -33,5 +33,5 @@ sublimePath["Linux"]=~/.config/sublime-text-3/Packages/User/Shell-Unix-Generic.s
 localSublimePath=sublime/Shell-Unix-Generic.sublime-settings
 
 if [[ -h ${sublimePath[$(uname)]} ]] || [[ ! -a ${sublimePath[$(uname)]} ]]; then
-    ln -sf "$PWD/$localSublimePath" "${sublimePath[$(uname)]}"
+    ln -sf "$thisDir/$localSublimePath" "${sublimePath[$(uname)]}"
 fi
