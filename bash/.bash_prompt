@@ -1,4 +1,4 @@
-#! /usr/local/bin/bash
+#! /usr/bin/env bash
 
 # ---------- Set up custom prompt ----------
 function makePS1 {

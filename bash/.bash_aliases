@@ -1,4 +1,4 @@
-#! /usr/local/bin/bash
+#! /usr/bin/env bash
 
 # ---------- Regular commands with options ----------
 alias mkdir="mkdir -p"

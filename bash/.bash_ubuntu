@@ -1,4 +1,4 @@
-#! /usr/local/bin/bash
+#! /usr/bin/env bash
 
 alias lla="ls -al --color=auto"
 alias agi="sudo apt-get update && sudo apt-get install"

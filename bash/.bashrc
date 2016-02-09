@@ -1,4 +1,4 @@
-#! /usr/local/bin/bash
+#! /usr/bin/env bash
 
 # Currently running bash version 4.x.x
 # to return bash to it's original version run the following command:
