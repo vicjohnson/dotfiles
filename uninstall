@@ -13,12 +13,12 @@ files=(
     ~/.gitprompt
     ~/.vim
     ~/.vimrc
-    ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Shell-Unix-Generic.sublime-settings
-    ~/.config/sublime-text-3/Packages/User/Shell-Unix-Generic.sublime-settings
 )
 
 for f in "${files[@]}"; do
-    if [ -h "$f" ]; then
+    if [ -L "$f" ]; then
         rm -rf "$f"
+    else
+        echo "$f is not a symlink, skipping deletion."
     fi
 done

@@ -2,6 +2,18 @@
 
 thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+while getopts ":f" opt; do
+    case "$opt" in
+        f)
+            force=true
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+            ;;
+    esac
+done
+
 git -C "$thisDir" submodule init
 git -C "$thisDir" submodule update
 
@@ -21,17 +33,11 @@ files[~/.vim]=vim/.vim
 files[~/.vimrc]=vim/.vimrc
 
 for f in ${!files[@]}; do
-    if [[ -h $f ]] || [[ ! -a $f ]]; then
+    # if it doesn't exist, is a symlink, or installing with force.
+    if [[ ! -f "$f" ]] || [[ -L "$f" ]] || [[ "$force" = true ]]; then
+        rm -rf "$f"
         ln -sf "$thisDir/${files[$f]}" "$f"
+    else
+        echo "$f is not a symbolic link, use -f or remove the file."
     fi
 done
-
-declare -A sublimePath
-
-sublimePath["Darwin"]=~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Shell-Unix-Generic.sublime-settings
-sublimePath["Linux"]=~/.config/sublime-text-3/Packages/User/Shell-Unix-Generic.sublime-settings
-localSublimePath=sublime/Shell-Unix-Generic.sublime-settings
-
-if [[ -h ${sublimePath[$(uname)]} ]] || [[ ! -a ${sublimePath[$(uname)]} ]]; then
-    ln -sf "$thisDir/$localSublimePath" "${sublimePath[$(uname)]}"
-fi
