@@ -1,6 +1,10 @@
+#! /usr/local/bin/bash
+
 alias lla="ls -al --color=auto"
 alias agi="sudo apt-get update && sudo apt-get install"
 
+# Either setup the dircolors from a config file or at least get some reasonable
+# ls coloring
 if [[ -f ~/.dircolors ]]; then
     eval $(dircolors ~/.dircolors)
 else

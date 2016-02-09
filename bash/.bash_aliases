@@ -1,13 +1,16 @@
+#! /usr/local/bin/bash
+
 # ---------- Regular commands with options ----------
 alias mkdir="mkdir -p"
 alias grep="grep --color=auto"
-alias cx="chmod a+x"
+alias cx="chmod +x"
 alias sl="sudo !!"
+
+# When I cd into the previous directory using `cd -`, pipe the ouput into the abyss
 alias cd="cd $1 >> /dev/null"
 
 
 # ---------- Internet aliases ----------
-alias cade="ssh victorj@lab1-26.eng.utah.edu"
 alias exip="curl -s http://checkip.dyndns.org/ | grep -o '[0-9][0-9]*.[0-9][0-9]*.[0-9][0-9]*.[0-9]*'"
 
 

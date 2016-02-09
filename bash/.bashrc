@@ -1,3 +1,5 @@
+#! /usr/local/bin/bash
+
 # Currently running bash version 4.x.x
 # to return bash to it's original version run the following command:
 # chsh -s /bin/bash
@@ -47,4 +49,6 @@ function mkdirc {
 
 
 # ---------- Other helpful stuff ----------
+
+# Correct typoswhen cd'ing around
 shopt -s cdspell;

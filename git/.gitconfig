@@ -1,9 +1,11 @@
 [core]
+	# Leave line endings the way they were
 	autocrlf = false
 	safecrlf = true
 	excludesfile = /Users/victor/.gitignore_global
 	editor = vim
 [alias]
+	# All of my custom aliases to speed things up a bit
 	co = checkout
 	ci = commit
     cia = commit -a -m 

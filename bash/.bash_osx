@@ -1,3 +1,5 @@
+#! /usr/local/bin/bash
+
 # ---------- homebrew autocomplete ----------
 source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
 
@@ -13,6 +15,11 @@ alias bs="brew search"
 
 export CLICOLOR=1
 
+# If there is a dircolors config file, check to see if this mac has the GNU
+# coreutils library, if it does, then set the dircolors according to the config.
+# If GNU coreutils is not installed, ask them to install it.
+# If the user doesn't want to install it or there is no dircolors config, then
+# setup some basic ls colorings
 if [[ -f ~/.dircolors ]]; then
     if [[ -f /usr/local/bin/gdircolors ]]; then
         eval $(/usr/local/bin/gdircolors ~/.dircolors)
@@ -41,7 +48,7 @@ else
     export LSCOLORS=gxbxfxdxcxegedabagaced
 fi
 
-
+# Use the GNU ls instead of the builtin OS X version.
 if [[ -e /usr/local/bin/gls ]]; then
     alias lla="/usr/local/bin/gls -al --color=auto"
 else

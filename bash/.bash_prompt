@@ -1,8 +1,11 @@
+#! /usr/local/bin/bash
+
 # ---------- Set up custom prompt ----------
 function makePS1 {
     # This must be done first to preserve the last exit status
     local last_exit_status=$?
 
+    # Build the different parts of the bash prompt
     local start="${No_Color}${Dim}[${Normal}"
     local end="${No_Color}${Dim}]${Normal}"
     local delim="${No_Color}${Dim}][${Normal}"
@@ -13,23 +16,26 @@ function makePS1 {
     local prompt="${Dim}- $: ${Normal}"
     local branch=$(__git_ps1 "%s")
 
-
+    # If you are in a git repo, then add the current branch to the prompt
     if [[ ${branch} != "" ]]; then
         branch="${start} ${Purple}${branch}${No_Color} ${end}"
     fi
 
+    # If you are on a remote machine, the add the host name to the prompt
     if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ]; then
         my_host="${start} ${host} ${end}"
     else
         my_host=""
     fi
 
+    # Display the previous exit status with a green 0 or the bold, red status code
     if [[ ${last_exit_status} -eq "0" ]]; then
         exit_status="${Green}${last_exit_status}${No_Color}"
     else
         exit_status="${Red}${Bold}${last_exit_status}${Normal}${No_Color}"
     fi
 
+    # Put it all together
     export PS1="\n${Cyan}${start} ${directory} ${delim} ${user} ${end}${my_host}${branch}\n"
     export PS1+="${start}${exit_status}${delim}${cmd_num}${end} ${prompt}"
 }

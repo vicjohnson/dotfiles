@@ -1,11 +1,25 @@
 #! /usr/bin/env bash
 
+# Get the directory that contains this script so it can be run from anywhere
+# without breaking the symlinks.
 thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-while getopts ":f" opt; do
+## Search for opts and set flags/print info accordingly
+while getopts ":fh" opt; do
     case "$opt" in
         f)
             force=true
+            ;;
+        h)
+            echo
+            echo "Usage: ./install [-f]"
+            echo
+            echo "The following options are available:"
+            echo
+            echo "    -f    Forces the installation of all settings files, overwriting any that already exist."
+            echo "    -h    Displays help information"
+            echo
+            exit 0
             ;;
         \?)
             echo "Invalid option: -$OPTARG" >&2
@@ -14,26 +28,32 @@ while getopts ":f" opt; do
     esac
 done
 
+# Installs the vim packages using git submodules.  Note the -C option sets the
+# working directory for git.
 git -C "$thisDir" submodule init
 git -C "$thisDir" submodule update
 
+
+# Setup a list of the files to install and where to install them to.
 declare -A files
 
-files[~/.bashrc]=bash/.bashrc
-files[~/.bash_styles]=bash/.bash_styles
-files[~/.bash_prompt]=bash/.bash_prompt
-files[~/.bash_aliases]=bash/.bash_aliases
-files[~/.bash_welcome]=bash/.bash_welcome
-files[~/.bash_osx]=bash/.bash_osx
-files[~/.bash_ubuntu]=bash/.bash_ubuntu
-files[~/.dircolors]=bash/.dircolors
-files[~/.gitconfig]=git/.gitconfig
-files[~/.gitprompt]=git/.gitprompt
-files[~/.vim]=vim/.vim
-files[~/.vimrc]=vim/.vimrc
+files["$HOME/.bashrc"]=bash/.bashrc
+files["$HOME/.bash_styles"]=bash/.bash_styles
+files["$HOME/.bash_prompt"]=bash/.bash_prompt
+files["$HOME/.bash_aliases"]=bash/.bash_aliases
+files["$HOME/.bash_welcome"]=bash/.bash_welcome
+files["$HOME/.bash_osx"]=bash/.bash_osx
+files["$HOME/.bash_ubuntu"]=bash/.bash_ubuntu
+files["$HOME/.dircolors"]=bash/.dircolors
+files["$HOME/.gitconfig"]=git/.gitconfig
+files["$HOME/.gitprompt"]=git/.gitprompt
+files["$HOME/.vim"]=vim/.vim
+files["$HOME/.vimrc"]=vim/.vimrc
 
+# Iterate the list of files, installing each one or printing the reason for
+# skipping installation.
 for f in ${!files[@]}; do
-    # if it doesn't exist, is a symlink, or installing with force.
+    # if it doesn't exist, is a symlink, or installing with force, then install.
     if [[ ! -f "$f" ]] || [[ -L "$f" ]] || [[ "$force" = true ]]; then
         rm -rf "$f"
         ln -sf "$thisDir/${files[$f]}" "$f"
