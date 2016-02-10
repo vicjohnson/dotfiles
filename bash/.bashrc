@@ -32,11 +32,6 @@ elif [[ $(uname) == "Linux" ]]; then
 fi
 
 
-# ---------- Load nvm when the shell starts up ----------
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-
 # ---------- Any time I cd into a directory, add that directory to $PATH ----------
 export PATH="$PATH:~/bin:"
 

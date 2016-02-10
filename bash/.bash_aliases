@@ -4,7 +4,6 @@
 alias mkdir="mkdir -p"
 alias grep="grep --color=auto"
 alias cx="chmod +x"
-alias sl="sudo !!"
 
 # When I cd into the previous directory using `cd -`, pipe the ouput into the abyss
 alias cd="cd $1 >> /dev/null"
