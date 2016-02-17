@@ -47,3 +47,6 @@ function mkdirc {
 
 # Correct typoswhen cd'ing around
 shopt -s cdspell;
+
+# Set my preferred color for grep
+export GREP_COLOR="48;5;194;38;5;24"
