@@ -23,7 +23,7 @@ if [[ -f ~/.dircolors ]]; then
     if [[ -f /usr/local/bin/gdircolors ]]; then
         eval $(/usr/local/bin/gdircolors ~/.dircolors)
     else
-        echo "GNU coreutils must be installed."
+        echo "GNU coreutils must be installed"
 
         while true; do
             read -p "Do you want to install them with Homebrew? (y/n) " yn
@@ -38,7 +38,7 @@ if [[ -f ~/.dircolors ]]; then
                     break
                     ;;
                 * )
-                    echo "Please answer yes or no."
+                    echo "Please answer y or n"
                     ;;
             esac
         done
