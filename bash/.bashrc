@@ -44,7 +44,7 @@ function mkdirc {
 
 # ---------- Simple timestamp function ----------
 function timestamp {
-    date +"%Y-%m-%d %H:%M:%S"
+    date + "%Y-%m-%d-%H:%M:%S"
 }
 
 # ---------- Instead of removing files, just move them to a trash folder ----------
@@ -56,7 +56,9 @@ function saferm {
     target="${1%/}"
     base=$(basename "$target")
 
-    mv "$target" "$HOME/.mytrash/$(timestamp)-$base"
+    currentTime=$(timestamp)
+    mkdir "$HOME/.mytrash/$currentTime"
+    mv "$target" "$HOME/.mytrash/$currentTime"
 }
 
 alias rm="saferm"
