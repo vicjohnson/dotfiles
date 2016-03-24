@@ -20,7 +20,7 @@ alias exip="curl -s http://checkip.dyndns.org/ | grep -o '[0-9][0-9]*.[0-9][0-9]
 # ---------- Compiler/Interpreter aliases ----------
 alias py="python"
 alias serve="python -m SimpleHTTPServer"
-
+alias rh='runhaskell'
 
 # ---------- My quick navigation aliases ----------
 alias proj="cd ~/Documents/projects"

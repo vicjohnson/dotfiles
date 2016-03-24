@@ -42,6 +42,25 @@ function mkdirc {
     cd "$1"
 }
 
+# ---------- Simple timestamp function ----------
+function timestamp {
+    date +"%Y-%m-%d %H:%M:%S"
+}
+
+# ---------- Instead of removing files, just move them to a trash folder ----------
+function saferm {
+    if [[ ! -e ~/.mytrash/ ]]; then
+        mkdir ~/.mytrash/
+    fi
+
+    target="${1%/}"
+    base=$(basename "$target")
+
+    mv "$target" "$HOME/.mytrash/$(timestamp)-$base"
+}
+
+alias rm="saferm"
+alias emtr="\rm -rf $HOME/.myTrash/*"
 
 # ---------- Other helpful stuff ----------
 
@@ -50,3 +69,4 @@ shopt -s cdspell;
 
 # Set my preferred color for grep
 export GREP_COLOR="48;5;194;38;5;24"
+export HISTCONTROL=ignoreboth:erasedups
