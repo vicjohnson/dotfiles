@@ -44,7 +44,7 @@ function mkdirc {
 
 # ---------- Simple timestamp function ----------
 function timestamp {
-    date + "%Y-%m-%d-%H:%M:%S"
+    date +"%Y-%m-%d %H:%M:%S"
 }
 
 # ---------- Instead of removing files, just move them to a trash folder ----------
@@ -54,21 +54,52 @@ function saferm {
     fi
 
     target="${1%/}"
-    base=$(basename "$target")
 
     currentTime=$(timestamp)
     mkdir "$HOME/.mytrash/$currentTime"
     mv "$target" "$HOME/.mytrash/$currentTime"
+    echo "$(dirname $(myreadlink $1))" >> "$HOME/.mytrash/$currentTime/.trash_old_location"
+}
+
+function restr {
+    target="${1%/}"
+
+    if [[ -e "$target/.trash_old_location" ]]; then
+        location=$(head -n 1 "$target/.trash_old_location")
+
+        if [[ -d "$location" ]]; then
+            mv "$target"/* "$location"
+            \rm "$location/.trash_old_location"
+            \rm -rf "$target"
+        else
+            echo "The containing directory no longer exists."
+            return
+        fi
+    else
+        echo "The file/directory cannot be restored."
+        return
+    fi
 }
 
 alias rm="saferm"
-alias emtr="\rm -rf $HOME/.myTrash/*"
+alias emtr="\rm -rf $HOME/.mytrash/*"
+alias lstr="ls -al $HOME/.mytrash"
+
+
+# ---------- Gets an absolute path to a file ----------
+function myreadlink() {
+    (
+    cd $(dirname $1)
+    echo $PWD/$(basename $1)
+    )
+}
+
 
 # ---------- Other helpful stuff ----------
 
 # Correct typoswhen cd'ing around
-shopt -s cdspell;
-
+shopt -s cdspell
+shopt -s dotglob nullglob
 # Set my preferred color for grep
 export GREP_COLOR="48;5;194;38;5;24"
 export HISTCONTROL=ignoreboth:erasedups
