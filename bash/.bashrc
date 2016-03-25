@@ -54,8 +54,12 @@ function saferm {
         mkdir ~/.mytrash/
     fi
 
-    # remove a trailing slash if there is one
-    target="${1%/}"
+    # remove a trailing slash from each arg if there is one
+    args=()
+    for arg in "$@"
+    do
+        args+=("${arg%/}")
+    done
 
     # Get the current time to name the directory to hold the deleted stuff
     currentTime=$(timestamp)
@@ -64,7 +68,10 @@ function saferm {
     mkdir "$HOME/.mytrash/$currentTime"
 
     # Move the stuff to the trash
-    mv "$target" "$HOME/.mytrash/$currentTime"
+    for target in "${args[@]}"
+    do
+        mv "$target" "$HOME/.mytrash/$currentTime"
+    done
 
     # Add a new file to the trash folder containing the old location of the stuff
     # Hopefully there is nothing named ".trash_old_location"
@@ -72,9 +79,37 @@ function saferm {
 }
 
 # ---------- Used to restore a file/directory deleted with saferm ----------
-function restr {
+# Note: If dotfiles are not being restored, then add `shopt -s dotglob nullglob`
+# to your bashrc to include dotfiles in glob patterns.
+function rstr {
     # Remove a trailing slash if there is one
     target="${1%/}"
+
+    # Make sure dotfiles are included in globs so no files are left behind.
+    if [[ $(shopt -s) != *"dotglob"* ]]; then
+        echo ""
+        echo "Dotfiles will not be copied and will be removed from the trash.  In order"
+        echo "to copy dot files, add the following command to your .bashrc:"
+        echo ""
+        echo "    shopt -s dotglob nullglob"
+        echo ""
+
+        # Ask the user if they want to continue without setting dotglob
+        while true; do
+            read -p "Would you like to continue anyways? (y/n) " yn
+            case $yn in
+                [Yy]* )
+                    break
+                    ;;
+                [Nn]* )
+                    return
+                    ;;
+                * )
+                    echo "Please answer y or n"
+                    ;;
+            esac
+        done
+    fi
 
     # Make sure there is an old location file to read from
     if [[ -e "$target/.trash_old_location" ]]; then
@@ -118,9 +153,12 @@ function myreadlink() {
 
 # ---------- Other helpful stuff ----------
 
-# Correct typoswhen cd'ing around
+# Correct typos when cd'ing around
 shopt -s cdspell
+
+# Adds dotfiles to glob patterns
 shopt -s dotglob nullglob
+
 # Set my preferred color for grep
 export GREP_COLOR="48;5;194;38;5;24"
 export HISTCONTROL=ignoreboth:erasedups
