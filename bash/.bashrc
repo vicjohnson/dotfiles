@@ -48,10 +48,11 @@ function timestamp {
 }
 
 # ---------- Instead of removing files, just move them to a trash folder ----------
+export MY_TRASH_DIR="$HOME/.mytrash"
 function saferm {
     # Make sure ~/.mytrash exists, if it doesn't, then create it
-    if [[ ! -e ~/.mytrash/ ]]; then
-        mkdir ~/.mytrash/
+    if [[ ! -e "$MY_TRASH_DIR" ]]; then
+        mkdir "$MY_TRASH_DIR"
     fi
 
     # remove a trailing slash from each arg if there is one
@@ -65,17 +66,17 @@ function saferm {
     currentTime=$(timestamp)
 
     # Create the directory in the trash named with the timestamp
-    mkdir "$HOME/.mytrash/$currentTime"
+    mkdir "$MY_TRASH_DIR/$currentTime"
 
     # Move the stuff to the trash
     for target in "${args[@]}"
     do
-        mv "$target" "$HOME/.mytrash/$currentTime"
+        mv "$target" "$MY_TRASH_DIR/$currentTime"
     done
 
     # Add a new file to the trash folder containing the old location of the stuff
     # Hopefully there is nothing named ".trash_old_location"
-    echo "$(dirname $(myreadlink $1))" >> "$HOME/.mytrash/$currentTime/.trash_old_location"
+    echo "$(dirname $(myreadlink $1))" >> "$MY_TRASH_DIR/$currentTime/.trash_old_location"
 }
 
 # ---------- Used to restore a file/directory deleted with saferm ----------
@@ -138,8 +139,8 @@ function rstr {
 
 # ---------- Set aliases for safe removal and retrieval ----------
 alias rm="saferm"
-alias emtr="\rm -rf $HOME/.mytrash/*"
-alias lstr="ls -al $HOME/.mytrash"
+alias emtr="\rm -rf $MY_TRASH_DIR/*"
+alias lstr="ls -al $MY_TRASH_DIR"
 
 
 # ---------- Gets an absolute path to a file ----------
