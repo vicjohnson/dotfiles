@@ -74,7 +74,7 @@ TERM xterm-termite
 # Background 256 color coding:
 # 48;5;COLOR_NUMBER
 
-NORMAL                  00;38;5;242             # no color code at all
+NORMAL                  00;38;5;244             # no color code at all
 #FILE                   00                      # regular file: use no color at all
 RESET                   0                       # reset to "normal" color
 DIR                     00;38;5;38                 # directory 01;34
@@ -203,22 +203,22 @@ EXEC                    00;38;5;34
 .dircolors      00;38;5;167
 
 # Other files
-.torrent         00;38;5;27
-*Makefile        00;38;5;27
-*Rakefile        00;38;5;27
-*Dockerfile      00;38;5;27
-*build.xml       00;38;5;27
-*1               00;38;5;27
-.nfo             00;38;5;27
-*README          00;38;5;27
-*README.txt      00;38;5;27
-*readme.txt      00;38;5;27
-*README.markdown 00;38;5;27
-.md              00;38;5;27
-.ini             00;38;5;27
-.cfg             00;38;5;27
-.conf            00;38;5;27
-.sqlite          00;38;5;27
+.torrent         00;38;5;30
+*Makefile        00;38;5;30
+*Rakefile        00;38;5;30
+*Dockerfile      00;38;5;30
+*build.xml       00;38;5;30
+*1               00;38;5;30
+.nfo             00;38;5;30
+*README          00;38;5;30
+*README.txt      00;38;5;30
+*readme.txt      00;38;5;30
+*README.markdown 00;38;5;30
+.md              00;38;5;30
+.ini             00;38;5;30
+.cfg             00;38;5;30
+.conf            00;38;5;30
+.sqlite          00;38;5;30
 
 # logs and backups
 .log        00;38;5;242
