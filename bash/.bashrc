@@ -152,6 +152,17 @@ function myreadlink() {
 }
 
 
+function words {
+    wordsFile="/usr/share/dict/words"
+
+    if [[ ! -f "$wordsFile" ]]; then
+        echo "You have no words file at $wordsFile"
+    else
+        cat $wordsFile
+    fi
+}
+
+
 # ---------- Other helpful stuff ----------
 
 # Correct typos when cd'ing around
