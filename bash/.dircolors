@@ -74,11 +74,11 @@ TERM xterm-termite
 # Background 256 color coding:
 # 48;5;COLOR_NUMBER
 
-NORMAL                  00;38;5;244             # no color code at all
+NORMAL                  00;38;5;242             # no color code at all
 #FILE                   00                      # regular file: use no color at all
 RESET                   0                       # reset to "normal" color
-DIR                     38;5;24                 # directory 01;34
-LINK                    48;5;194;38;5;24                # symbolic link. (target for target type color)
+DIR                     00;38;5;38                 # directory 01;34
+LINK                    00;38;5;194       # symbolic link. (target for target type color)
 
 MULTIHARDLINK           00                      # regular file with more than one link
 FIFO                    48;5;223;38;5;24;01             # pipe
@@ -93,75 +93,75 @@ EXEC                    00;38;5;34
 .out    00;38;5;34
 
 ## Archives or compressed
-.tar    01;38;5;61
-.tgz    01;38;5;61
-.taz    01;38;5;61
-.tlz    01;38;5;61
-.txz    01;38;5;61
-.zip    01;38;5;61
-.z      01;38;5;61
-.Z      01;38;5;61
-.dz     01;38;5;61
-.gz     01;38;5;61
-.lz     01;38;5;61
-.xz     01;38;5;61
-.bz2    01;38;5;61
-.bz     01;38;5;61
-.tbz    01;38;5;61
-.tbz2   01;38;5;61
-.cpgz   01;38;5;61
-.tz     01;38;5;61
-.jar    01;38;5;61
-.rar    01;38;5;61
+.tar    01;38;5;141
+.tgz    01;38;5;141
+.taz    01;38;5;141
+.tlz    01;38;5;141
+.txz    01;38;5;141
+.zip    01;38;5;141
+.z      01;38;5;141
+.Z      01;38;5;141
+.dz     01;38;5;141
+.gz     01;38;5;141
+.lz     01;38;5;141
+.xz     01;38;5;141
+.bz2    01;38;5;141
+.bz     01;38;5;141
+.tbz    01;38;5;141
+.tbz2   01;38;5;141
+.cpgz   01;38;5;141
+.tz     01;38;5;141
+.jar    01;38;5;141
+.rar    01;38;5;141
 
 # Image formats
-.jpg    00;38;5;161
-.JPG    00;38;5;161
-.jpeg   00;38;5;161
-.gif    00;38;5;161
-.bmp    00;38;5;161
-.png    00;38;5;161
-.PNG    00;38;5;161
-.svg    00;38;5;161
-.svgz   00;38;5;161
-.eps    00;38;5;161
-.ico    00;38;5;161
+.jpg    00;38;5;226
+.JPG    00;38;5;226
+.jpeg   00;38;5;226
+.gif    00;38;5;226
+.bmp    00;38;5;226
+.png    00;38;5;226
+.PNG    00;38;5;226
+.svg    00;38;5;226
+.svgz   00;38;5;226
+.eps    00;38;5;226
+.ico    00;38;5;226
 
 # Video formats
-.mov    00;38;5;166
-.MOV    00;38;5;166
-.mpg    00;38;5;166
-.mpeg   00;38;5;166
-.m2v    00;38;5;166
-.mkv    00;38;5;166
-.mp4    00;38;5;166
-.m4v    00;38;5;166
-.mp4v   00;38;5;166
-.flc    00;38;5;166
-.avi    00;38;5;166
-.webm   00;38;5;166
+.mov    00;38;5;178
+.MOV    00;38;5;178
+.mpg    00;38;5;178
+.mpeg   00;38;5;178
+.m2v    00;38;5;178
+.mkv    00;38;5;178
+.mp4    00;38;5;178
+.m4v    00;38;5;178
+.mp4v   00;38;5;178
+.flc    00;38;5;178
+.avi    00;38;5;178
+.webm   00;38;5;178
 
 # Audio formats
-.aac    00;38;5;166
-.flac   00;38;5;166
-.mid    00;38;5;166
-.midi   00;38;5;166
-.mp3    00;38;5;166
-.mpc    00;38;5;166
-.wav    00;38;5;166
-.m4a    00;38;5;166
+.aac    00;38;5;190
+.flac   00;38;5;190
+.mid    00;38;5;190
+.midi   00;38;5;190
+.mp3    00;38;5;190
+.mpc    00;38;5;190
+.wav    00;38;5;190
+.m4a    00;38;5;190
 
 # Documents/Readables
-.pdf  00;38;5;38
-.PDF  00;38;5;38
-.htm  00;38;5;38
-.html 00;38;5;38
-.HTML 00;38;5;38
-.doc  00;38;5;38
-.docx 00;38;5;38
-.ppt  00;38;5;38
-.pptx 00;38;5;38
-.xml  00;38;5;38
+.pdf  00;38;5;132
+.PDF  00;38;5;132
+.htm  00;38;5;132
+.html 00;38;5;132
+.HTML 00;38;5;132
+.doc  00;38;5;132
+.docx 00;38;5;132
+.ppt  00;38;5;132
+.pptx 00;38;5;132
+.xml  00;38;5;132
 
 # Source code files
 .pl             00;38;5;167
@@ -192,6 +192,7 @@ EXEC                    00;38;5;34
 .gitignore      00;38;5;167
 .gitmodules     00;38;5;167
 .gitprompt      00;38;5;167
+.bash_history   00;38;5;167
 .bash_welcome   00;38;5;167
 .bash_osx       00;38;5;167
 .bash_ubuntu    00;38;5;167
