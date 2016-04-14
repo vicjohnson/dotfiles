@@ -7,8 +7,9 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-export DIRCOLORS_FILE=".dircolors_dark"
-# export DIRCOLORS_FILE=".dircolors_light"
+# This will set the dircolors file to pull ls colors from.  Now it's easy to switch
+# between different themes.
+export DIRCOLORS_FILE="$HOME/.dircolors_dark"
 
 # ---------- Source other files if they exist ----------
 files=(
