@@ -19,9 +19,9 @@ export CLICOLOR=1
 # If GNU coreutils is not installed, ask them to install it.
 # If the user doesn't want to install it or there is no dircolors config, then
 # setup some basic ls colorings
-if [[ -f ~/.dircolors ]]; then
+if [[ -e "$DIRCOLORS_FILE" ]]; then
     if [[ -f /usr/local/bin/gdircolors ]]; then
-        eval $(/usr/local/bin/gdircolors ~/.dircolors)
+        eval $(/usr/local/bin/gdircolors "$DIRCOLORS_FILE")
     else
         echo "GNU coreutils must be installed"
 
@@ -30,7 +30,7 @@ if [[ -f ~/.dircolors ]]; then
             case $yn in
                 [Yy]* )
                     brew install coreutils --default-names
-                    eval $(/usr/local/bin/gdircolors -b ~/.dircolors)
+                    eval $(/usr/local/bin/gdircolors -b "$DIRCOLORS_FILE")
 
                     break
                     ;;

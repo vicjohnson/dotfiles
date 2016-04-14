@@ -7,6 +7,9 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+export DIRCOLORS_FILE=".dircolors_dark"
+# export DIRCOLORS_FILE=".dircolors_light"
+
 # ---------- Source other files if they exist ----------
 files=(
     /etc/bashrc

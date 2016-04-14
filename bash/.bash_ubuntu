@@ -5,8 +5,8 @@ alias agi="sudo apt-get update && sudo apt-get install"
 
 # Either setup the dircolors from a config file or at least get some reasonable
 # ls coloring
-if [[ -f ~/.dircolors ]]; then
-    eval $(dircolors ~/.dircolors)
+if [[ -e "$DIRCOLORS_FILE" ]]; then
+    eval $(dircolors "$DIRCOLORS_FILE")
 else
     export LS_COLORS="di=36:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35"
 fi
