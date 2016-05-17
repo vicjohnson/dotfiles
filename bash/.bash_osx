@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 # ---------- homebrew autocomplete ----------
-source $(brew --repository)/Library/Contributions/brew_bash_completion.sh
+source $(brew --repository)/etc/bash_completion.d/brew
 
 
 # ---------- Application aliases ----------
