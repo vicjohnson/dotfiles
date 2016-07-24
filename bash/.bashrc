@@ -64,12 +64,6 @@ function words {
 
 # ---------- Other helpful stuff ----------
 
-# Correct typos when cd'ing around
-shopt -s cdspell
-
-# Adds dotfiles to glob patterns
-shopt -s dotglob nullglob
-
 # Set my preferred color for grep
 export GREP_COLOR="48;5;194;38;5;24"
 export HISTCONTROL=ignoreboth:erasedups

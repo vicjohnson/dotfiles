@@ -53,3 +53,9 @@ if [[ -e /usr/local/bin/gls ]]; then
 else
     alias lla="ls -al"
 fi
+
+# Correct typos when cd'ing around
+shopt -s cdspell
+
+# Adds dotfiles to glob patterns
+shopt -s dotglob nullglob
