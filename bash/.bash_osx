@@ -1,8 +1,5 @@
 #! /usr/bin/env bash
 
-# ---------- homebrew autocomplete ----------
-source $(brew --repository)/etc/bash_completion.d/brew
-
 
 # ---------- Application aliases ----------
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
