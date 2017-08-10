@@ -1,15 +1,13 @@
 #! /usr/bin/env bash
 
-# Currently running bash version 4.x.x
-# to return bash to it's original version run the following command:
-# chsh -s /bin/bash
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
 # This will set the dircolors file to pull ls colors from.  Now it's easy to switch
 # between different themes.
 export DIRCOLORS_FILE="$HOME/.dircolors_dark"
+# export DIRCOLORS_FILE="$HOME/.dircolors_light"
+
 
 # ---------- Source other files if they exist ----------
 files=(
@@ -36,7 +34,7 @@ elif [[ $(uname) == "Linux" ]]; then
 fi
 
 
-# ---------- Any time I cd into a directory, add that directory to $PATH ----------
+# ---------- Update the $PATH to conatin a couple extra directories ----------
 export PATH="$PATH:$HOME/bin:"
 
 
@@ -46,11 +44,14 @@ function mkdirc {
     cd "$1"
 }
 
+
 # ---------- Simple timestamp function ----------
 function timestamp {
     date +"%Y-%m-%d %H:%M:%S"
 }
 
+
+# ---------- Words list of available on this OS ----------
 function words {
     wordsFile="/usr/share/dict/words"
 
