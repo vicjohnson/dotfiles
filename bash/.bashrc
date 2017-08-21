@@ -31,6 +31,8 @@ if [[ $(uname) == "Darwin" ]]; then
     source ~/.bash_osx
 elif [[ $(uname) == "Linux" ]]; then
     source ~/.bash_ubuntu
+elif [[ $(uname) == "MINGW64_NT-10.0" ]]; then
+    source ~/.bash_windows
 fi
 
 
