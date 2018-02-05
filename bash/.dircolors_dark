@@ -75,14 +75,14 @@ TERM xterm-termite
 # 48;5;COLOR_NUMBER
 
 NORMAL                  00;38;5;244             # no color code at all
-#FILE                   00                      # regular file: use no color at all
 RESET                   0                       # reset to "normal" color
-DIR                     00;38;5;38                 # directory 01;34
-LINK                    00;38;5;194       # symbolic link. (target for target type color)
+DIR                     48;5;00;38;5;38
+OTHER_WRITABLE          48;5;00;38;5;38         # a directory with o+x permission
+LINK                    00;38;5;194             # symbolic link. (target for target type color)
 
 MULTIHARDLINK           00                      # regular file with more than one link
-FIFO                    48;5;223;38;5;24;01             # pipe
-SOCK                    48;5;223;38;5;24;01             # socket
+FIFO                    48;5;223;38;5;24;01     # pipe
+SOCK                    48;5;223;38;5;24;01     # socket
 DOOR                    48;5;223;38;5;24;01
 BLK                     48;5;223;38;5;24;01
 CHR                     48;5;223;38;5;24;01
