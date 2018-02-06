@@ -13,8 +13,6 @@ files=(
     "$HOME/.dircolors_dark"
     "$HOME/.gitconfig"
     "$HOME/.gitprompt"
-    "$HOME/.vim"
-    "$HOME/.vimrc"
 )
 
 # Iterate the files and remove them as long as the file is a symlink.

@@ -76,8 +76,8 @@ TERM xterm-termite
 
 NORMAL                  00;38;5;244             # no color code at all
 RESET                   0                       # reset to "normal" color
-DIR                     48;5;00;38;5;38
-OTHER_WRITABLE          48;5;00;38;5;38         # a directory with o+x permission
+DIR                     38;5;38
+OTHER_WRITABLE          38;5;38                 # a directory with o+x permission
 LINK                    00;38;5;194             # symbolic link. (target for target type color)
 
 MULTIHARDLINK           00                      # regular file with more than one link
@@ -86,7 +86,7 @@ SOCK                    48;5;223;38;5;24;01     # socket
 DOOR                    48;5;223;38;5;24;01
 BLK                     48;5;223;38;5;24;01
 CHR                     48;5;223;38;5;24;01
-ORPHAN                  05;48;5;1;38;5;15       # symlink to nonexistent file, or non-stat'able file
+ORPHAN                  05;48;5;1;38;5;15       # symlink to nonexistent file, or non-statable file
 EXEC                    00;38;5;34
 
 .dmg    00;38;5;34
