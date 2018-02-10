@@ -64,6 +64,11 @@ function words {
     fi
 }
 
+# ---------- Convert a string to lowercase ----------
+function lowercase {
+    echo "$1" | tr '[:upper:]' '[:lower:]'
+}
+
 
 # ---------- Other helpful stuff ----------
 
