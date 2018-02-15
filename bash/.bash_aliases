@@ -13,3 +13,12 @@ alias py="python"
 alias pyy="python3"
 alias serve="python -m SimpleHTTPServer"
 alias rh='runhaskell'
+
+# ---------- Git related aliases ----------
+function gclean {
+    git fetch -p && git br -d $(git branch -vv | grep ': gone]' | awk '{print $1}')
+}
+
+function gpo {
+    git push -u origin $(git rev-parse --abbrev-ref HEAD)
+}
