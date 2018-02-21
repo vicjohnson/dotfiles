@@ -9,6 +9,17 @@ export DIRCOLORS_FILE="$HOME/.dircolors_dark"
 # export DIRCOLORS_FILE="$HOME/.dircolors_light"
 
 
+# ---------- Update the $PATH to conatin a couple extra directories ----------
+export PATH="$PATH:$HOME/bin:"
+
+
+# ---------- Other helpful stuff ----------
+
+# Set my preferred color for grep
+export GREP_COLOR="48;5;194;38;5;24"
+export HISTCONTROL=ignoreboth:erasedups
+
+
 # ---------- Source other files if they exist ----------
 files=(
     /etc/bashrc
@@ -34,44 +45,3 @@ elif [[ $(uname) == "Linux" ]]; then
 elif [[ $(uname) == "MINGW64_NT-10.0" ]]; then
     source ~/.bash_windows
 fi
-
-
-# ---------- Update the $PATH to conatin a couple extra directories ----------
-export PATH="$PATH:$HOME/bin:"
-
-
-# ---------- Automatically cd into a new dir ----------
-function mkdirc {
-    \mkdir "$1"
-    cd "$1"
-}
-
-
-# ---------- Simple timestamp function ----------
-function timestamp {
-    date +"%Y-%m-%d %H:%M:%S"
-}
-
-
-# ---------- Words list of available on this OS ----------
-function words {
-    wordsFile="/usr/share/dict/words"
-
-    if [[ ! -f "$wordsFile" ]]; then
-        echo "You have no words file at $wordsFile"
-    else
-        cat $wordsFile
-    fi
-}
-
-# ---------- Convert a string to lowercase ----------
-function lowercase {
-    echo "$1" | tr '[:upper:]' '[:lower:]'
-}
-
-
-# ---------- Other helpful stuff ----------
-
-# Set my preferred color for grep
-export GREP_COLOR="48;5;194;38;5;24"
-export HISTCONTROL=ignoreboth:erasedups
