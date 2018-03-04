@@ -9,6 +9,30 @@ alias bu="brew uninstall"
 alias bl="brew list"
 alias bs="brew search"
 
+# ---------- Utility aliases ----------
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias path='echo -e ${PATH//:/\\n}'
+alias rmdsstore="find . -type f -name '*.DS_Store' -ls -delete"
+
+
+# ---------- Set some system preferences that aren't offered normally ----------
+# Expand save panel by default
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+
+# Expand print panel by default
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
+# Save to disk (not to iCloud) by default
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+
+# ---------- Set shell options ----------
+shopt -s cdspell
+shopt -s dotglob
+
+
+# ---------- Set up some ls options ----------
 export CLICOLOR=1
 
 # If there is a dircolors config file, check to see if this mac has the GNU
@@ -18,7 +42,7 @@ export CLICOLOR=1
 # setup some basic ls colorings
 if [[ -e "$DIRCOLORS_FILE" ]]; then
     if [[ -f /usr/local/bin/gdircolors ]]; then
-        eval $(/usr/local/bin/gdircolors "$DIRCOLORS_FILE")
+        eval $(/usr/local/bin/gdircolors -b "$DIRCOLORS_FILE")
     else
         echo "GNU coreutils must be installed"
 
@@ -51,9 +75,3 @@ if [[ -e /usr/local/bin/gls ]]; then
 else
     alias lla="ls -al"
 fi
-
-# Correct typos when cd'ing around
-shopt -s cdspell
-
-# Adds dotfiles to glob patterns
-shopt -s dotglob nullglob
