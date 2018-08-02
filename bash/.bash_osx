@@ -28,9 +28,6 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Disable press for accent characters
 defaults write -g ApplePressAndHoldEnabled -bool false
 
-# Disable the sound on boot
-sudo nvram SystemAudioVolume=" "
-
 # ---------- Set shell options ----------
 shopt -s cdspell
 shopt -s dotglob
