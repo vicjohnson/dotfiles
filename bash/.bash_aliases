@@ -12,13 +12,17 @@ alias cd="cd $1 >> /dev/null"
 alias py="python"
 alias pyy="python3"
 alias serve="python -m SimpleHTTPServer"
+alias jek="bundle exec jekyll serve"
 alias rh='runhaskell'
 
 # ---------- Git related functions ----------
+
+# Deletes any git branches that no longer exist on origin.
 function gclean {
     git fetch -p && git br -d $(git branch -vv | grep ': gone]' | awk '{print $1}')
 }
 
+# Push the the current branch to origin even if it doesn't exist already.
 function gpo {
     git push -u origin $(git rev-parse --abbrev-ref HEAD)
 }
