@@ -35,7 +35,7 @@ if [[ -e "$DIRCOLORS_FILE" ]]; then
             read -p "Do you want to install them with Homebrew? (y/n) " yn
             case $yn in
                 [Yy]* )
-                    brew install coreutils --default-names
+                    brew install coreutils
                     eval $(/usr/local/bin/gdircolors -b "$DIRCOLORS_FILE")
 
                     break
