@@ -27,18 +27,15 @@ function gpo {
     git push -u origin $(git rev-parse --abbrev-ref HEAD)
 }
 
-
 # ---------- Automatically cd into a new dir ----------
 function mkdirc {
     \mkdir -p "$1" && cd "$1"
 }
 
-
 # ---------- Simple timestamp function ----------
 function timestamp {
     date +"%Y-%m-%d %H:%M:%S"
 }
-
 
 # ---------- Words list of available on this OS ----------
 function words {

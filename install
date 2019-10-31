@@ -48,6 +48,7 @@ files["$HOME/.bash_windows"]=bash/.bash_windows
 files["$HOME/.dircolors_light"]=bash/.dircolors_light
 files["$HOME/.dircolors_dark"]=bash/.dircolors_dark
 files["$HOME/.vimrc"]=bash/.vimrc
+files["$HOME/.hushlogin"]=bash/.hushlogin
 files["$HOME/.gitconfig"]=git/.gitconfig
 files["$HOME/.gitprompt"]=git/.gitprompt
 
