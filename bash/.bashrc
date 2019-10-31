@@ -8,17 +8,14 @@
 export DIRCOLORS_FILE="$HOME/.dircolors_dark"
 # export DIRCOLORS_FILE="$HOME/.dircolors_light"
 
-
 # ---------- Update the $PATH to conatin a couple extra directories ----------
 export PATH="$PATH:$HOME/bin:"
-
 
 # ---------- Other helpful stuff ----------
 
 # Set my preferred color for grep
 export GREP_COLOR="48;5;194;38;5;24"
 export HISTCONTROL=ignoreboth:erasedups
-
 
 # ---------- Source other files if they exist ----------
 files=(
@@ -36,12 +33,11 @@ for f in ${files[@]}; do
     fi
 done
 
-
 # ---------- Source platform specific config ----------
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.bash_osx
 elif [[ $(uname) == "Linux" ]]; then
     source ~/.bash_ubuntu
-elif [[ $(uname) == "MINGW64_NT-10.0" ]]; then
+elif [[ $(uname) == *"MINGW64"* ]]; then
     source ~/.bash_windows
 fi
