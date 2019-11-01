@@ -1,14 +1,14 @@
 [core]
 	# Leave line endings the way they were
-	autocrlf = false
+	autocrlf = input
 	safecrlf = true
-	excludesfile = /Users/victor/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = vim
 [alias]
 	# All of my custom aliases to speed things up a bit
 	co = checkout
 	ci = commit
-    cia = commit -a -m 
+	cia = commit -a -m 
 	st = status
 	br = branch
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
@@ -16,6 +16,12 @@
 	default = simple
 [color]
 	ui = true
+[color "status"]
+	added = green reverse
+	changed = yellow reverse
+	untracked = red reverse
+[user]
+	useConfigOnly = true
 [difftool]
 	prompt = false
 [filter "lfs"]
