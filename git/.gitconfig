@@ -11,7 +11,9 @@
 	cia = commit -a -m 
 	st = status
 	br = branch
-	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	# [ hash ][ date ][ author ] message
+	hista = log --pretty=format:'%C(dim white)[%Creset %C(red)%h%Creset %C(dim white)]%Creset%C(dim white)[%Creset %C(cyan)%ad%Creset %C(dim white)]%Creset%C(dim white)[%Creset %C(green)%an%Creset %C(dim white)]%Creset %s%d' --date=short
+	hist = hista -20
 [push]
 	default = simple
 [color]
@@ -28,3 +30,5 @@
 	smudge = git-lfs smudge %f
 	required = true
 	clean = git-lfs clean %f
+[pull]
+	rebase = true
