@@ -19,9 +19,9 @@
 [color]
 	ui = true
 [color "status"]
-	added = green reverse
-	changed = yellow reverse
-	untracked = red reverse
+	added = green
+	changed = yellow
+	untracked = red
 [user]
 	useConfigOnly = true
 [difftool]
