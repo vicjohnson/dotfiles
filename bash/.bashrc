@@ -1,5 +1,9 @@
 #! /usr/bin/env bash
 
+if [ -a ~/.bash_env ]; then
+    source ~/.bash_env
+fi
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -37,7 +41,7 @@ done
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.bash_osx
 elif [[ $(uname) == "Linux" ]]; then
-    source ~/.bash_ubuntu
+    source ~/.bash_nix
 elif [[ $(uname) == *"MINGW64"* ]]; then
     source ~/.bash_windows
 fi
