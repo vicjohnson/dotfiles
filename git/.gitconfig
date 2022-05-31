@@ -1,6 +1,6 @@
 [core]
 	# Leave line endings the way they were
-	autocrlf = input
+	autocrlf = false
 	safecrlf = true
 	excludesfile = ~/.gitignore_global
 	editor = vim
@@ -32,3 +32,5 @@
 	clean = git-lfs clean %f
 [pull]
 	rebase = true
+[init]
+	defaultBranch = main
