@@ -25,40 +25,24 @@ export CLICOLOR=1
 # If GNU coreutils is not installed, ask them to install it.
 # If the user doesn't want to install it or there is no dircolors config, then
 # setup some basic ls colorings
-if [[ -e "$DIRCOLORS_FILE" ]]; then
-    if [[ -f /opt/homebrew/bin/gdircolors ]]; then
-        eval $(/opt/homebrew/bin/gdircolors -b "$DIRCOLORS_FILE")
-    else
-        echo "GNU coreutils must be installed"
+export LSCOLORS=gxbxfxdxcxegedabagaced
+alias lla="ls -al"
 
-        while true; do
-            read -p "Do you want to install them with Homebrew? (y/n) " yn
-            case $yn in
-                [Yy]* )
-                    brew install coreutils
-                    eval $(/opt/homebrew/bin/gdircolors -b "$DIRCOLORS_FILE")
+# This will set the dircolors file to pull ls colors from.  Now it's easy to switch
+# between different themes.
+export DIRCOLORS_FILE="$HOME/.dircolors_dark"
+# export DIRCOLORS_FILE="$HOME/.dircolors_light"
 
-                    break
-                    ;;
-                [Nn]* )
-                    break
-                    ;;
-                * )
-                    echo "Please answer y or n"
-                    ;;
-            esac
-        done
+if brewPrefix=$(brew --prefix); then
+    if [[ -e "$brewPrefix/bin/gls" ]]; then
+        # Use the GNU ls instead of the builtin OS X version.
+        alias lla="$brewPrefix/bin/gls -al --color=auto"
+        alias ls="$brewPrefix/bin/gls --color=auto"
+
+        if [[ -e "$DIRCOLORS_FILE" ]]; then
+            eval $($brewPrefix/bin/gdircolors -b "$DIRCOLORS_FILE")
+        fi
     fi
-else
-    export LSCOLORS=gxbxfxdxcxegedabagaced
-fi
-
-# Use the GNU ls instead of the builtin OS X version.
-if [[ -e /opt/homebrew/bin/gls ]]; then
-    alias lla="/opt/homebrew/bin/gls -al --color=auto"
-    alias ls="/opt/homebrew/bin/gls --color=auto"
-else
-    alias lla="ls -al"
 fi
 
 # ---------- Set some system preferences that aren't offered normally ----------
