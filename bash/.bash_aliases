@@ -11,9 +11,12 @@ alias cd="cd $1 >> /dev/null"
 # ---------- Compiler/Interpreter aliases ----------
 alias py="python"
 alias pyy="python3"
+alias fl="flutter"
 alias serve="python -m SimpleHTTPServer"
 alias jek="bundle exec jekyll serve"
 alias rh='runhaskell'
+alias s="npm start"
+alias dr="dotnet run"
 
 # ---------- Git related functions ----------
 
@@ -25,6 +28,10 @@ function gclean {
 # Push the the current branch to origin even if it doesn't exist already.
 function gpo {
     git push -u origin $(git rev-parse --abbrev-ref HEAD)
+}
+
+function glines {
+    git log --author="$1" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
 }
 
 # ---------- Automatically cd into a new dir ----------
@@ -51,4 +58,8 @@ function words {
 # ---------- Convert a string to lowercase ----------
 function lowercase {
     echo "$1" | tr '[:upper:]' '[:lower:]'
+}
+
+function killport {
+    kill -9 $(lsof -ti:"$1")
 }

@@ -45,7 +45,18 @@ if brewPrefix=$(brew --prefix); then
     fi
 fi
 
+# Kills the docker desktop app and the VM (excluding vmnetd -> it's a service)
+function killdocker() {
+    ps ax| grep -i docker | egrep -iv 'grep|com.docker.vmnetd' | awk '{print $1}' | xargs kill
+}
+
 # ---------- Set some system preferences that aren't offered normally ----------
+
+function plist-set-or-add () {
+  /usr/libexec/PlistBuddy -c "Set $1" "${@:2}" ||
+  /usr/libexec/PlistBuddy -c "Add $1" "${@:2}" ||
+  echo "Unable to set or add plist with args:" "$@"
+}
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -68,9 +79,15 @@ defaults write NSGlobalDomain AppleHighlightColor -string ".816 1.0 .843"
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
+# Disable Photos.app from starting everytime a device is plugged in
+defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
 ###############################################################################
+
+# Trackpad: set trackpad sensitivity
+defaults write -g com.apple.trackpad.scaling 2
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
@@ -86,6 +103,14 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Keyboard: set key repeat speed
+defaults write NSGlobalDomain KeyRepeat 2
+defaults write NSGlobalDomain InitialKeyRepeat 15
+
+# Keyboard Disable smart quotes and smart dashes
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 ###############################################################################
 # Screen                                                                      #
@@ -116,17 +141,15 @@ defaults write com.apple.finder _FXSortFoldersFirst -bool true
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# Enable snap-to-grid for icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-
 # Use list view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+defaults write com.apple.finder FXPreferredViewStyle Clmv
 
 # Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
+
+# Avoid creation of .DS_Store files on network volumes?
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #

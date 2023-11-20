@@ -13,6 +13,7 @@ files=(
     "$HOME/.dircolors_dark"
     "$HOME/.gitconfig"
     "$HOME/.gitprompt"
+    "$HOME/.git-completion"
     "$HOME/.vimrc"
 )
 

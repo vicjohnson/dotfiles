@@ -51,6 +51,7 @@ files["$HOME/.vimrc"]=bash/.vimrc
 files["$HOME/.hushlogin"]=bash/.hushlogin
 files["$HOME/.gitconfig"]=git/.gitconfig
 files["$HOME/.gitprompt"]=git/.gitprompt
+files["$HOME/.git-completion"]=git/.git-completion
 
 # Iterate the list of files, installing each one or printing the reason for
 # skipping installation.
