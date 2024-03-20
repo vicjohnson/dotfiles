@@ -41,5 +41,3 @@ elif [[ $(uname) == "Linux" ]]; then
 elif [[ $(uname) == *"MINGW64"* ]]; then
     source ~/.bash_windows
 fi
-
-source /Users/nivati/.docker/init-bash.sh || true # Added by Docker Desktop
