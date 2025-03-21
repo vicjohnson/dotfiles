@@ -73,9 +73,6 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-# Set the default highlight color
-defaults write NSGlobalDomain AppleHighlightColor -string ".816 1.0 .843"
-
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
@@ -105,8 +102,8 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Keyboard: set key repeat speed
-defaults write NSGlobalDomain KeyRepeat 2
-defaults write NSGlobalDomain InitialKeyRepeat 15
+# defaults write NSGlobalDomain KeyRepeat 2
+# defaults write NSGlobalDomain InitialKeyRepeat 15
 
 # Keyboard Disable smart quotes and smart dashes
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false

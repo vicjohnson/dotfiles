@@ -18,6 +18,14 @@ alias rh='runhaskell'
 alias s="npm start"
 alias dr="dotnet run"
 
+# ---------- Image metadata updates ----------
+
+alias jpginfo="exiftool -time:all -G -a -s"
+
+function jpgsetdate {
+    exiftool -overwrite_original -AllDates="$1 00:00:00" $2
+}
+
 # ---------- Git related functions ----------
 
 # Deletes any git branches that no longer exist on origin.
