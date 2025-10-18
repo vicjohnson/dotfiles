@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+alias src="source ~/.bash_profile"
+
 # ---------- Regular commands with options ----------
 alias mkdir="mkdir -p"
 alias grep="grep --color=auto"

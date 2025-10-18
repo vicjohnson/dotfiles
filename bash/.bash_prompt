@@ -5,6 +5,8 @@ function makePS1 {
     # This must be done first to preserve the last exit status
     local last_exit_status=$?
 
+    setworkdir $(pwd)
+
     # Build the different parts of the bash prompt
     local start="${No_Color}${Dim}[${Normal}"
     local end="${No_Color}${Dim}]${Normal}"

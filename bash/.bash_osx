@@ -17,6 +17,10 @@ alias rmdsstore="find . -type f -name '*.DS_Store' -ls -delete"
 shopt -s cdspell
 shopt -s dotglob
 
+function setworkdir {
+    echo -en "\e]7;$1\a";
+}
+
 # ---------- Set up some ls options ----------
 export CLICOLOR=1
 
