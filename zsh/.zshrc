@@ -33,6 +33,7 @@ setopt GLOB_COMPLETE
 setopt CD_SILENT
 
 # ---------- Source other files if they exist ----------
+
 files=(
     ~/.zsh_local
     ~/.zsh_styles
@@ -48,6 +49,7 @@ for f in ${files[@]}; do
 done
 
 # ---------- Source platform specific config ----------
+
 if [[ $(uname) == "Darwin" ]]; then
     source ~/.zsh_osx
 elif [[ $(uname) == "Linux" ]]; then
@@ -55,3 +57,8 @@ elif [[ $(uname) == "Linux" ]]; then
 elif [[ $(uname) == *"MINGW64"* ]]; then
     source ~/.zsh_windows
 fi
+
+# ---------- Language specific things that I use on most machines ----------
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"  # This loads nvm
