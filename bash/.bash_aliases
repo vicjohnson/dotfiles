@@ -10,7 +10,7 @@ alias cx="chmod +x"
 # When I cd into the previous directory using `cd -`, pipe the ouput into the abyss
 alias cd="cd $1 >> /dev/null"
 
-# ---------- Compiler/Interpreter aliases ----------
+# ---------- Programming ----------
 alias py="python"
 alias pyy="python3"
 alias fl="flutter"
@@ -19,6 +19,7 @@ alias jek="bundle exec jekyll serve"
 alias rh='runhaskell'
 alias s="npm start"
 alias dr="dotnet run"
+alias code="code ."
 
 # ---------- Image metadata updates ----------
 
