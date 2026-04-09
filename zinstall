@@ -1,8 +1,8 @@
-#! /opt/homebrew/bin/bash
+#!/bin/zsh
 
 # Get the directory that contains this script so it can be run from anywhere
 # without breaking the symlinks.
-thisDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+thisDir="$( cd "$( dirname "${0}" )" && pwd )"
 
 ## Search for opts and set flags/print info accordingly
 while getopts ":fh" opt; do
@@ -29,27 +29,34 @@ while getopts ":fh" opt; do
 done
 
 # Setup a list of the files to install and where to install them to.
-declare -A files
+typeset -A files
 
-files["$HOME/.zshrc"]=zsh/.zshrc
-files["$HOME/.zsh_styles"]=zsh/.zsh_styles
-files["$HOME/.zsh_prompt"]=zsh/.zsh_prompt
-files["$HOME/.zsh_aliases"]=zsh/.zsh_aliases
-files["$HOME/.zsh_welcome"]=zsh/.zsh_welcome
-files["$HOME/.zsh_osx"]=zsh/.zsh_osx
-files["$HOME/.zsh_nix"]=zsh/.zsh_nix
-files["$HOME/.zsh_windows"]=zsh/.zsh_windows
+files[$HOME/.zshrc]=zsh/.zshrc
+files[$HOME/.zsh_styles]=zsh/.zsh_styles
+files[$HOME/.zsh_prompt]=zsh/.zsh_prompt
+files[$HOME/.zsh_aliases]=zsh/.zsh_aliases
+files[$HOME/.zsh_welcome]=zsh/.zsh_welcome
+files[$HOME/.zsh_osx]=zsh/.zsh_osx
+files[$HOME/.zsh_nix]=zsh/.zsh_nix
+files[$HOME/.zsh_windows]=zsh/.zsh_windows
 
-files["$HOME/.gitconfig"]=git/.gitconfig
+files[$HOME/.gitconfig]=git/.gitconfig
+
+files[$HOME/.dircolors_dark]=misc/.dircolors_dark
+files[$HOME/.dircolors_light]=misc/.dircolors_light
+files[$HOME/.hushlogin]=misc/.hushlogin
+files[$HOME/.vimrc]=misc/.vimrc
 
 # Iterate the list of files, installing each one or printing the reason for
 # skipping installation.
-for f in ${!files[@]}; do
+for dest in ${(k)files}; do
+    src=${files[$dest]}
+
     # if it doesn't exist, is a symlink, or installing with force, then install.
-    if [[ ! -f "$f" ]] || [[ -L "$f" ]] || [[ "$force" = true ]]; then
-        rm -rf "$f"
-        ln -sf "$thisDir/${files[$f]}" "$f"
+    if [[ ! -f "$dest" ]] || [[ -L "$dest" ]] || [[ "$force" = true ]]; then
+        rm -rf "$dest"
+        ln -sfv "$thisDir/$src" "$dest"
     else
-        echo "$f is not a symbolic link, use -f or remove the file."
+        echo "$dest is not a symbolic link, use -f or remove the file."
     fi
 done
