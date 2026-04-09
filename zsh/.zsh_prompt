@@ -3,15 +3,16 @@ makePrompt () {
 
 	setworkdir $(pwd)
 
-	local start="${gray}[${nc}" 
-	local end="${gray}]${nc}" 
-	local delim="${gray}][${nc}" 
-	local directory="${cyan}%~${nc}" 
-	local user="${cyan}${USER}${nc}" 
-	local host="${purple}%m${nc}" 
-	local cmd_num="${purple}%!${nc}" 
-	local prmpt="${gray}->${nc} " 
+	local start="${dgray}[${nc}"
+	local end="${dgray}]${nc}"
+	local delim="${dgray}][${nc}"
+	local directory="${cyan}%~${nc}"
+	local user="${cyan}${USER}${nc}"
+	local host="${purple}%m${nc}"
+	local cmd_num="${purple}%!${nc}"
+	local prmpt="${dgray}->${nc} "
 	local branch="${vcs_info_msg_0_}"
+	local time="${lgray}$(timestamp)${nc}"
 
 	if [[ ${branch} != "" ]]
 	then
@@ -32,7 +33,7 @@ makePrompt () {
 		exit_status="${red}${bold}${last_exit_status}${nbold}${nc}" 
 	fi
 
-	PROMPT=$'\n'"${start} ${directory} ${delim} ${user} ${end}${my_host}${branch}" 
+	PROMPT=$'\n'"${start} ${directory} ${delim} ${user} ${end}${my_host}${branch}${start} ${time} ${end}" 
 	PROMPT+=$'\n'"${start}${exit_status}${delim}${cmd_num}${end} ${prmpt}" 
 }
 
