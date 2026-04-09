@@ -1,0 +1,43 @@
+makePrompt () {
+	local last_exit_status=$? 
+
+	setworkdir $(pwd)
+
+	local start="${gray}[${nc}" 
+	local end="${gray}]${nc}" 
+	local delim="${gray}][${nc}" 
+	local directory="${cyan}%~${nc}" 
+	local user="${cyan}${USER}${nc}" 
+	local host="${purple}%m${nc}" 
+	local cmd_num="${purple}%!${nc}" 
+	local prmpt="${gray}->${nc} " 
+	local branch=$(__git_ps1 "%s") 
+
+	if [[ ${branch} != "" ]]
+	then
+		branch="${start} ${purple}${branch}${nc} ${end}" 
+	fi
+
+	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ]
+	then
+		my_host="${start} ${host} ${end}" 
+	else
+		my_host="" 
+	fi
+
+	if [[ ${last_exit_status} -eq "0" ]]
+	then
+		exit_status="${green}${last_exit_status}${nc}" 
+	else
+		exit_status="${red}${bold}${last_exit_status}${nbold}${nc}" 
+	fi
+
+	PROMPT=$'\n'"${start} ${directory} ${delim} ${user} ${end}${my_host}${branch}" 
+	PROMPT+=$'\n'"${start}${exit_status}${delim}${cmd_num}${end} ${prmpt}" 
+}
+
+# ---------- Set up the prompt ----------
+
+setopt PROMPT_SUBST
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd makePrompt

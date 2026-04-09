@@ -1,0 +1,28 @@
+#! /usr/bin/env zsh
+
+# Create a list of files that should be unlinked.
+files=(
+    "$HOME/.zshrc"
+    "$HOME/.zsh_styles"
+    "$HOME/.zsh_prompt"
+    "$HOME/.zsh_aliases"
+    "$HOME/.zsh_welcome"
+    "$HOME/.zsh_macos"
+    "$HOME/.dircolors_light"
+    "$HOME/.dircolors_dark"
+    "$HOME/.gitconfig"
+    "$HOME/.vimrc"
+    "$HOME/.hushlogin"
+)
+
+# Iterate the files and remove them as long as the file is a symlink.
+for f in "${files[@]}"; do
+    if [ ! -f "$f" ]; then
+        : # This file doesn't exist. Noop
+    elif [ -L "$f" ]; then
+        echo "$f - Removed"
+        rm -rf "$f"
+    else
+        echo "$f - Is not a symlink, skipping deletion."
+    fi
+done

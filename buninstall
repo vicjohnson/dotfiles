@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /opt/homebrew/bin/bash
 
 # Create a list of files that should be unlinked.
 files=(
@@ -8,20 +8,25 @@ files=(
     "$HOME/.bash_aliases"
     "$HOME/.bash_welcome"
     "$HOME/.bash_osx"
-    "$HOME/.bash_ubuntu"
+    "$HOME/.bash_nix"
+    "$HOME/.bash_windows"
     "$HOME/.dircolors_light"
     "$HOME/.dircolors_dark"
     "$HOME/.gitconfig"
     "$HOME/.gitprompt"
     "$HOME/.git-completion"
     "$HOME/.vimrc"
+    "$HOME/.hushlogin"
 )
 
 # Iterate the files and remove them as long as the file is a symlink.
 for f in "${files[@]}"; do
-    if [ -L "$f" ]; then
+    if [ ! -f "$f" ]; then
+        : # This file doesn't exist. Noop
+    elif [ -L "$f" ]; then
+        echo "$f - Removed"
         rm -rf "$f"
     else
-        echo "$f is not a symlink, skipping deletion."
+        echo "$f - Is not a symlink, skipping deletion."
     fi
 done

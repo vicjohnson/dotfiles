@@ -1,14 +1,12 @@
-#! /opt/homebrew/bin/bash
-
-alias src="source ~/.bash_profile"
+alias src="source ~/.zshrc"
 
 # ---------- Regular commands with options ----------
 alias mkdir="mkdir -p"
 alias grep="grep --color=auto"
 alias cx="chmod +x"
 
-# When I cd into the previous directory using `cd -`, pipe the ouput into the abyss
-alias cd="cd $1 >> /dev/null"
+# When I cd into the previous directory using `cd -`, suppress the output
+function cd { builtin cd "$@" >/dev/null }
 
 # ---------- Programming ----------
 alias py="python"
@@ -36,7 +34,7 @@ function gclean {
     git fetch -p && git br -d $(git branch -vv | grep ': gone]' | awk '{print $1}')
 }
 
-# Push the the current branch to origin even if it doesn't exist already.
+# Push the current branch to origin even if it doesn't exist already.
 function gpo {
     git push -u origin $(git rev-parse --abbrev-ref HEAD)
 }
@@ -55,7 +53,7 @@ function timestamp {
     date +"%Y-%m-%d %H:%M:%S"
 }
 
-# ---------- Words list of available on this OS ----------
+# ---------- Words list available on this OS ----------
 function words {
     wordsFile="/usr/share/dict/words"
 

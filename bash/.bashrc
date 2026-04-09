@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /opt/homebrew/bin/bash
 
 if [ -a ~/.bash_env ]; then
     source ~/.bash_env
@@ -35,7 +35,7 @@ done
 
 # ---------- Source platform specific config ----------
 if [[ $(uname) == "Darwin" ]]; then
-    source ~/.bash_osx
+    source ~/.bash_macos
 elif [[ $(uname) == "Linux" ]]; then
     source ~/.bash_nix
 elif [[ $(uname) == *"MINGW64"* ]]; then

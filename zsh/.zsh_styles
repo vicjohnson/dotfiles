@@ -1,0 +1,16 @@
+# ---------- Color variables for coloring output ----------
+
+black='%F{0}'
+red='%F{1}'          # Red
+green='%F{2}'        # Green
+yellow='%F{3}'       # Yellow
+blue='%F{4}'         # Blue
+purple='%F{5}'       # Purple
+cyan='%F{6}'         # Cyan
+white='%F{7}'        # White
+gray='%F{8}'        # White
+nc='%f'         # No Color
+
+bold='%B'            # Bold
+nb="%b"
+nbold="%b"
