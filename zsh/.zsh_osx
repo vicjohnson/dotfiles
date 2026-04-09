@@ -1,4 +1,5 @@
 # ---------- Homebrew ----------
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 alias bi="brew install"
@@ -7,18 +8,23 @@ alias bl="brew list"
 alias bs="brew search"
 
 # ---------- Application aliases ----------
+
 alias lip="ipconfig getifaddr en0"
 
 # ---------- Utility aliases ----------
+
 alias path='echo -e ${PATH//:/\\n}'
 alias rmdsstore="find . -type f -name '*.DS_Store' -ls -delete"
 
-# ---------- Set shell options ----------
-setopt CORRECT
-setopt GLOB_DOTS
+# ---------- MacOS functions ----------
 
 function setworkdir {
     echo -en "\e]7;$1\a";
+}
+
+# Kills the docker desktop app and the VM (excluding vmnetd -> it's a service)
+function killdocker() {
+    ps ax| grep -i docker | egrep -iv 'grep|com.docker.vmnetd' | awk '{print $1}' | xargs kill
 }
 
 # ---------- Set up some ls options ----------
@@ -48,11 +54,6 @@ if brewPrefix=$(brew --prefix); then
         fi
     fi
 fi
-
-# Kills the docker desktop app and the VM (excluding vmnetd -> it's a service)
-function killdocker() {
-    ps ax| grep -i docker | egrep -iv 'grep|com.docker.vmnetd' | awk '{print $1}' | xargs kill
-}
 
 # ---------- Set some system preferences that aren't offered normally ----------
 
@@ -153,7 +154,7 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 # Default search to the current directory
-defaults write com.apple.finder "FXDefaultSearchScope" -string "SCcf" && killall Finder
+defaults write com.apple.finder "FXDefaultSearchScope" -string "SCcf"
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #

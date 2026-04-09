@@ -11,7 +11,7 @@ makePrompt () {
 	local host="${purple}%m${nc}" 
 	local cmd_num="${purple}%!${nc}" 
 	local prmpt="${gray}->${nc} " 
-	local branch=$(__git_ps1 "%s") 
+	local branch="${vcs_info_msg_0_}"
 
 	if [[ ${branch} != "" ]]
 	then
@@ -40,4 +40,10 @@ makePrompt () {
 
 setopt PROMPT_SUBST
 autoload -Uz add-zsh-hook
+
+# Enabling and setting git info var to be used in prompt config.
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' formats '%b'
+
+add-zsh-hook precmd vcs_info
 add-zsh-hook precmd makePrompt

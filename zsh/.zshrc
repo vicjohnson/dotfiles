@@ -11,13 +11,27 @@ export PATH="$PATH:$HOME/bin:"
 # Set my preferred color for grep
 export GREP_COLOR="48;5;194;38;5;24"
 
+# ---------- History ----------
+
 # History: ignore duplicates and commands starting with a space
-setopt HIST_IGNORE_ALL_DUPS
+HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+setopt EXTENDED_HISTORY
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST 
+setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+SAVEHIST=500
+HISTSIZE=500
+
+setopt GLOB_DOTS
+setopt GLOB_COMPLETE
 
 # ---------- Source other files if they exist ----------
 files=(
-    ~/.gitprompt
     ~/.zsh_styles
     ~/.zsh_prompt
     ~/.zsh_aliases
