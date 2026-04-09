@@ -19,6 +19,7 @@ export HISTCONTROL=ignoreboth:erasedups
 # ---------- Source other files if they exist ----------
 files=(
     /etc/bashrc
+    ~/.bash_local
     ~/.gitprompt
     ~/.git-completion
     ~/.bash_styles
@@ -41,3 +42,9 @@ elif [[ $(uname) == "Linux" ]]; then
 elif [[ $(uname) == *"MINGW64"* ]]; then
     source ~/.bash_windows
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source ~/.gvm/scripts/gvm

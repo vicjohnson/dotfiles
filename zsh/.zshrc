@@ -30,8 +30,11 @@ HISTSIZE=500
 setopt GLOB_DOTS
 setopt GLOB_COMPLETE
 
+setopt CD_SILENT
+
 # ---------- Source other files if they exist ----------
 files=(
+    ~/.zsh_local
     ~/.zsh_styles
     ~/.zsh_prompt
     ~/.zsh_aliases

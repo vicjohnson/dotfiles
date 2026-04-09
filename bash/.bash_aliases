@@ -31,6 +31,10 @@ function jpgsetdate {
 
 # ---------- Git related functions ----------
 
+function rebase {
+    git rebase -i "HEAD~$1"
+}
+
 # Deletes any git branches that no longer exist on origin.
 function gclean {
     git fetch -p && git br -d $(git branch -vv | grep ': gone]' | awk '{print $1}')
@@ -43,6 +47,12 @@ function gpo {
 
 function glines {
     git log --author="$1" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -
+}
+
+function swap {
+    mv "$1" "swap_tmp"
+    mv "$2" "$1"
+    mv "swap_tmp" "$2"
 }
 
 # ---------- Automatically cd into a new dir ----------
