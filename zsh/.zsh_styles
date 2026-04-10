@@ -1,17 +1,17 @@
 # ---------- Color variables for coloring output ----------
 
-black='%F{0}'
-red='%F{1}'
-green='%F{2}'
-yellow='%F{3}'
-blue='%F{4}'
-purple='%F{5}'
-cyan='%F{6}'
-white='%F{7}'
-dgray='%F{242}'
-lgray='%F{8}'
-nc='%f'
+fblack='%F{0}'
+fred='%F{1}'
+fgreen='%F{2}'
+fyellow='%F{3}'
+fblue='%F{4}'
+fpurple='%F{5}'
+fcyan='%F{6}'
+fwhite='%F{7}'
+fdgray='%F{242}'
+flgray='%F{8}'
+nf='%f'
+nk='%k'
 
-bold='%B'
-nb="%b"
-nbold="%b"
+fbold='%B'
+fnbold="%b"

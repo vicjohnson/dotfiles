@@ -12,7 +12,7 @@ makePrompt () {
 	local cmd_num="${purple}%!${nc}"
 	local prmpt="${dgray}->${nc} "
 	local branch="${vcs_info_msg_0_}"
-	local time="${lgray}$(timestamp)${nc}"
+	local time="$(timestamp)"
 
 	if [[ ${branch} != "" ]]
 	then
@@ -37,6 +37,52 @@ makePrompt () {
 	PROMPT+=$'\n'"${start}${exit_status}${delim}${cmd_num}${end} ${prmpt}" 
 }
 
+createSection () {
+	local content bg fg
+	[[ -n $1 ]] && content="$1" || content=""
+	[[ -n $2 ]] && bg="%K{$2}" || bg="%k"
+	[[ -n $3 ]] && fg="%F{$3}" || fg="%f"
+
+	print "${bg}${fg}  ${content}  ${nf}${nk}"
+}
+
+makePrompt2 () {
+	local last_exit_status=$? 
+
+	setworkdir $(pwd)
+
+	local branch="${vcs_info_msg_0_}"
+	local time="$(timestamp)"
+
+	
+
+	dir="$(createSection %~ 97 255)"
+	user="$(createSection $USER 141 255)"
+
+	if [[ ${branch} != "" ]]; then branch="$(createSection $branch 203 255)"; fi
+
+	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] || [ -n "$SSH_CONNECTION" ]
+	then
+		my_host=" $(createSection some_thing 167 255)" 
+	else
+		my_host="" 
+	fi
+
+	if [[ ${last_exit_status} -eq "0" ]]
+	then
+		exit_status_bg="65" 
+	else
+		last_exit_status="${bold}$last_exit_status${nbold}"
+		exit_status_bg="124" 
+	fi
+
+	last="$(createSection $last_exit_status $exit_status_bg 255)"
+	cmdNum="$(createSection %! 237 250)"
+
+	PROMPT=$'\n'"${dir}${user}${branch}${my_host}" 
+	PROMPT+=$'\n'"${last}${cmdNum} ${flgray}>${nf} "
+}
+
 # ---------- Set up the prompt ----------
 
 setopt PROMPT_SUBST
@@ -47,4 +93,4 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' formats '%b'
 
 add-zsh-hook precmd vcs_info
-add-zsh-hook precmd makePrompt
+add-zsh-hook precmd makePrompt2
