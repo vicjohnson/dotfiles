@@ -49,12 +49,8 @@ createSection () {
 makePrompt2 () {
 	local last_exit_status=$? 
 
-	setworkdir $(pwd)
-
 	local branch="${vcs_info_msg_0_}"
 	local time="$(timestamp)"
-
-	
 
 	dir="$(createSection %~ 97 255)"
 	user="$(createSection $USER 141 255)"
@@ -86,7 +82,6 @@ makePrompt2 () {
 # ---------- Set up the prompt ----------
 
 setopt PROMPT_SUBST
-autoload -Uz add-zsh-hook
 
 # Enabling and setting git info var to be used in prompt config.
 autoload -Uz vcs_info

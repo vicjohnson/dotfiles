@@ -7,6 +7,10 @@ alias bu="brew uninstall"
 alias bl="brew list"
 alias bs="brew search"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"  # This loads nvm
+
+
 # ---------- Application aliases ----------
 
 alias lip="ipconfig getifaddr en0"
@@ -19,8 +23,10 @@ alias rmdsstore="find . -type f -name '*.DS_Store' -ls -delete"
 # ---------- MacOS functions ----------
 
 function setworkdir {
-    echo -en "\e]7;$1\a";
+    echo -en "\e]7;$(pwd)\a";
 }
+
+add-zsh-hook precmd setworkdir
 
 # Kills the docker desktop app and the VM (excluding vmnetd -> it's a service)
 function killdocker() {
@@ -37,11 +43,6 @@ export CLICOLOR=1
 # setup some basic ls colorings
 export LSCOLORS=gxbxfxdxcxegedabagaced
 alias lla="ls -al"
-
-# This will set the dircolors file to pull ls colors from.  Now it's easy to switch
-# between different themes.
-export DIRCOLORS_FILE="$HOME/.dircolors_dark"
-# export DIRCOLORS_FILE="$HOME/.dircolors_light"
 
 if brewPrefix=$(brew --prefix); then
     if [[ -e "$brewPrefix/bin/gls" ]]; then

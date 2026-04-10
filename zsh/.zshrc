@@ -11,6 +11,11 @@ export PATH="$PATH:$HOME/bin:"
 # Set my preferred color for grep
 export GREP_COLOR="48;5;194;38;5;24"
 
+# This will set the dircolors file to pull ls colors from.  Now it's easy to switch
+# between different themes.
+export DIRCOLORS_FILE="$HOME/.dircolors_dark"
+# export DIRCOLORS_FILE="$HOME/.dircolors_light"
+
 # ---------- History ----------
 
 # History: ignore duplicates and commands starting with a space
@@ -33,6 +38,8 @@ setopt GLOB_COMPLETE
 setopt CD_SILENT
 
 # ---------- Source other files if they exist ----------
+
+autoload -Uz add-zsh-hook
 
 files=(
     ~/.zsh_local
@@ -58,7 +65,3 @@ elif [[ $(uname) == *"MINGW64"* ]]; then
     source ~/.zsh_windows
 fi
 
-# ---------- Language specific things that I use on most machines ----------
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"  # This loads nvm
