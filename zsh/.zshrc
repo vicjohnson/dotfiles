@@ -16,6 +16,9 @@ export GREP_COLOR="48;5;194;38;5;24"
 export DIRCOLORS_FILE="$HOME/.dircolors_dark"
 # export DIRCOLORS_FILE="$HOME/.dircolors_light"
 
+# Init autocompletion
+autoload -Uz compinit && compinit
+
 # ---------- History ----------
 
 # History: ignore duplicates and commands starting with a space
