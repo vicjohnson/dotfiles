@@ -8,6 +8,8 @@ export PATH="$PATH:$HOME/bin:"
 
 # ---------- Other helpful stuff ----------
 
+autoload -Uz add-zsh-hook
+
 # Set my preferred color for grep
 export GREP_COLOR="48;5;194;38;5;24"
 
@@ -42,10 +44,13 @@ setopt CD_SILENT
 
 # ---------- Source other files if they exist ----------
 
-autoload -Uz add-zsh-hook
+function safesource {
+    if [ -f "$1" ]; then
+        source "$1"
+    fi
+}
 
 files=(
-    ~/.zsh_local
     ~/.zsh_styles
     ~/.zsh_prompt
     ~/.zsh_aliases
@@ -53,18 +58,19 @@ files=(
 )
 
 for f in ${files[@]}; do
-    if [ -f $f ]; then
-        source $f
-    fi
+    safesource $f
 done
 
 # ---------- Source platform specific config ----------
 
 if [[ $(uname) == "Darwin" ]]; then
-    source ~/.zsh_osx
+    safesource ~/.zsh_osx
 elif [[ $(uname) == "Linux" ]]; then
-    source ~/.zsh_nix
+    safesource ~/.zsh_nix
 elif [[ $(uname) == *"MINGW64"* ]]; then
-    source ~/.zsh_windows
+    safesource ~/.zsh_windows
 fi
 
+# ---------- Source local stuff last ----------
+
+safesource ~/.zsh_local
