@@ -19,7 +19,6 @@ alias jek="bundle exec jekyll serve"
 alias rh='runhaskell'
 alias s="npm start"
 alias dr="dotnet run"
-alias code="code ."
 
 # ---------- Image metadata updates ----------
 
